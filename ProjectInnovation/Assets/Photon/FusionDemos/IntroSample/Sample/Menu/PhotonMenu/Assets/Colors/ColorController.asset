@@ -1,0 +1,165 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90bc26442b0882479ece7a8397d02a5, type: 3}
+  m_Name: ColorController
+  m_EditorClassIdentifier: 
+  Prefabs:
+  - {fileID: 3091600657078508480, guid: 56de05f4b3c156e4fbee6cd4931796dd, type: 3}
+  - {fileID: 6822179855681341283, guid: 360dee8ad010dd9418b82dedf6c84ef6, type: 3}
+  - {fileID: 5913012799322100602, guid: 6d5c67685de20ad429add9235948366d, type: 3}
+  - {fileID: 3526735652671825083, guid: 9bf53e5dbe8aecb41a4822ce4d08a5ba, type: 3}
+  - {fileID: 4569679326212943843, guid: d8a3b7a7469ac6e40a1be5492c9e2e54, type: 3}
+  - {fileID: 7259858016457390551, guid: 0e0a410b5ed6a8f48ba19a1321f33d87, type: 3}
+  - {fileID: 6130347513068761031, guid: e3f34ffe671eb5443aac7d9e16b2a5d3, type: 3}
+  - {fileID: 6855691559546472791, guid: daa8d9ba05910484a8ed6a8efd9bb64d, type: 3}
+  - {fileID: 5461616926018199764, guid: 2747edbf513964a4c9df38f9b468ceab, type: 3}
+  - {fileID: 2239350750134469315, guid: 52ec713eaf4ed274cafada13fc180095, type: 3}
+  - {fileID: 4470953245619710333, guid: 058a244a32f2fd946b7292cf6ef6fe42, type: 3}
+  - {fileID: 7214011378199809647, guid: e476798301dc3c94e8687cefd9f041ac, type: 3}
+  - {fileID: 8381533416871272756, guid: f2410a32838386740a7b10e5353b991d, type: 3}
+  - {fileID: 2477726182739431750, guid: bdeb804efa0561e408e243446bb015ad, type: 3}
+  - {fileID: 8544207650983704811, guid: c8b60995629439f419b9e8d07826b530, type: 3}
+  - {fileID: 8711108887220532402, guid: ad4bf720029d2ec4495124a08e75cec6, type: 3}
+  - {fileID: 3882264908174179054, guid: 7dcf8bbc311999248bb5b77b0ddacaf8, type: 3}
+  Paths:
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Background.prefab;Background/Panel;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Background.prefab;Background/PhotonLogo;Image;FFFFFF0D
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Background.prefab;Background/ProductLogo/VersionLabel;TextMeshProUGUI;FFFFFF80
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Background.prefab;Background/ProductLogo;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton/Background;Image;4585B4FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton/ButtonLabel;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton/Icon;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton/Template/Background;Image;4585B4FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton/Template/Scrollbar/Sliding
+    Area/Handle;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton/Template/Scrollbar/Sliding
+    Area;Image;1A3F69FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton/Template/Scrollbar;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton/Template/Viewport/Content/Item/Item
+    Background;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton/Template/Viewport/Content/Item/Item
+    Checkmark;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton/Template/Viewport/Content/Item/Item
+    Label;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton/Template/Viewport/Content/Item;Toggle/disabledColor;316E9A80
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton/Template/Viewport/Content/Item;Toggle/highlightedColor;6BB3E9FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton/Template/Viewport/Content/Item;Toggle/normalColor;4585B4FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton/Template/Viewport/Content/Item;Toggle/pressedColor;316E9AFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton/Template/Viewport/Content/Item;Toggle/selectedColor;72CBFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton/Template/Viewport;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton/Template;Image;1A3F69FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/DropdownButton.prefab;DropdownButton;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/IconButton.prefab;IconButton/ButtonIcon;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/IconButton.prefab;IconButton;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/InputFieldButton.prefab;InputFieldButton/Background;Image;4585B4FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/InputFieldButton.prefab;InputFieldButton/Icon;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/InputFieldButton.prefab;InputFieldButton/Text
+    Area/Placeholder;TextMeshProUGUI;FFFFFF80
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/InputFieldButton.prefab;InputFieldButton/Text
+    Area/Text;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/InputFieldButton.prefab;InputFieldButton;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton/Background;Image;4585B4FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton/ButtonLabel;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton/Icon;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton/Template/Background;Image;4585B4FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton/Template/Scrollbar/Sliding
+    Area/Handle;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton/Template/Scrollbar/Sliding
+    Area;Image;1A3F69FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton/Template/Scrollbar;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton/Template/Viewport/Content/Item/Item
+    Background;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton/Template/Viewport/Content/Item/Item
+    Checkmark;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton/Template/Viewport/Content/Item/Item
+    Label;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton/Template/Viewport/Content/Item;Toggle/disabledColor;316E9A80
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton/Template/Viewport/Content/Item;Toggle/highlightedColor;6BB3E9FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton/Template/Viewport/Content/Item;Toggle/normalColor;4585B4FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton/Template/Viewport/Content/Item;Toggle/pressedColor;316E9AFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton/Template/Viewport/Content/Item;Toggle/selectedColor;72CBFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton/Template/Viewport;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton/Template;Image;1A3F69FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownButton;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuDropdown.prefab;MenuDropdown/DropdownLabel;TextMeshProUGUI;FFFFFF80
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuInputField.prefab;MenuInputField/InputFieldButton/Background;Image;4585B4FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuInputField.prefab;MenuInputField/InputFieldButton/Icon;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuInputField.prefab;MenuInputField/InputFieldButton/Text
+    Area/Placeholder;TextMeshProUGUI;FFFFFF80
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuInputField.prefab;MenuInputField/InputFieldButton/Text
+    Area/Text;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuInputField.prefab;MenuInputField/InputFieldButton;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuInputField.prefab;MenuInputField/InputLabel;TextMeshProUGUI;FFFFFF80
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuToggle.prefab;MenuToggle/ToggleButton/ActiveBackground;Image;4585B4FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuToggle.prefab;MenuToggle/ToggleButton/Background;Image;00000080
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuToggle.prefab;MenuToggle/ToggleButton/OffLabel;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuToggle.prefab;MenuToggle/ToggleButton/OnLabel;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuToggle.prefab;MenuToggle/ToggleButton;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/MenuToggle.prefab;MenuToggle/ToggleLabel;TextMeshProUGUI;FFFFFF80
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/PrimaryButton.prefab;PrimaryButton/Background/ButtonLabel;TextMeshProUGUI;0A1B33FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/PrimaryButton.prefab;PrimaryButton/Background;Image;72CBFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/PrimaryButton.prefab;PrimaryButton;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/PrimaryMenuButton.prefab;PrimaryMenuButton/Background/ButtonLabel;TextMeshProUGUI;0A1B33FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/PrimaryMenuButton.prefab;PrimaryMenuButton/Background;Image;72CBFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/PrimaryMenuButton.prefab;PrimaryMenuButton;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/SecondaryButton.prefab;SecondaryButton/Background/ButtonLabel;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/SecondaryButton.prefab;SecondaryButton/Background;Image;4585B4FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/SecondaryButton.prefab;SecondaryButton;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/SecondaryMenuButton.prefab;SecondaryMenuButton/Background/ButtonLabel;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/SecondaryMenuButton.prefab;SecondaryMenuButton/Background;Image;4585B4FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/SecondaryMenuButton.prefab;SecondaryMenuButton;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/TextButton.prefab;TextButton/ButtonIcon/Image;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/TextButton.prefab;TextButton/ButtonLabel;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/TextButton.prefab;TextButton;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/ToggleButton.prefab;ToggleButton/ActiveBackground;Image;4585B4FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/ToggleButton.prefab;ToggleButton/Background;Image;00000080
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/ToggleButton.prefab;ToggleButton/OffLabel;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/ToggleButton.prefab;ToggleButton/OnLabel;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Buttons/ToggleButton.prefab;ToggleButton;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/LoadingIcon.prefab;LoadingIcon/LoadingBackground/LoadingImage;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/LoadingIcon.prefab;LoadingIcon/LoadingBackground;Image;FFFFFF0D
+  - Assets/PhotonMenu/UIPrototype/Prefabs/LoadingIcon.prefab;LoadingIcon/LoadingLabel;TextMeshProUGUI;FFFFFF80
+  - Assets/PhotonMenu/UIPrototype/Prefabs/MenuCard.prefab;MenuCard/Background;Image;1A3F69FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/MenuCard.prefab;MenuCard/CardHeader;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/MenuCard.prefab;MenuCard/CardText;TextMeshProUGUI;FFFFFF80
+  - Assets/PhotonMenu/UIPrototype/Prefabs/MenuCard.prefab;MenuCard/CodeInputButton/Background;Image;0A1B33FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/MenuCard.prefab;MenuCard/CodeInputButton/Icon;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/MenuCard.prefab;MenuCard/CodeInputButton/Text
+    Area/Placeholder;TextMeshProUGUI;FFFFFF80
+  - Assets/PhotonMenu/UIPrototype/Prefabs/MenuCard.prefab;MenuCard/CodeInputButton/Text
+    Area/Text;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/MenuCard.prefab;MenuCard/CodeInputButton;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/MenuCard.prefab;MenuCard/PrimaryButton/Background/ButtonLabel;TextMeshProUGUI;0A1B33FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/MenuCard.prefab;MenuCard/PrimaryButton/Background;Image;72CBFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/MenuCard.prefab;MenuCard/PrimaryButton;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/MenuHeader.prefab;MenuHeader/Background;Image;1A3F69FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/MenuHeader.prefab;MenuHeader/HeaderLabel;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/MenuHeader.prefab;MenuHeader/IconButton/ButtonIcon;Image;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/MenuHeader.prefab;MenuHeader/IconButton;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/MenuHeader.prefab;MenuHeader/VersionLabel;TextMeshProUGUI;FFFFFF80
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Views/PopUpView.prefab;PopUpView/Blocker;Image;00000080
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Views/PopUpView.prefab;PopUpView/PoUp/Background;Image;1A3F69FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Views/PopUpView.prefab;PopUpView/PoUp/ButtonContainer/PrimaryButton
+    (1)/Background/ButtonLabel;TextMeshProUGUI;0A1B33FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Views/PopUpView.prefab;PopUpView/PoUp/ButtonContainer/PrimaryButton
+    (1)/Background;Image;72CBFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Views/PopUpView.prefab;PopUpView/PoUp/ButtonContainer/PrimaryButton
+    (1);Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Views/PopUpView.prefab;PopUpView/PoUp/ButtonContainer/PrimaryButton/Background/ButtonLabel;TextMeshProUGUI;0A1B33FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Views/PopUpView.prefab;PopUpView/PoUp/ButtonContainer/PrimaryButton/Background;Image;72CBFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Views/PopUpView.prefab;PopUpView/PoUp/ButtonContainer/PrimaryButton;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Views/PopUpView.prefab;PopUpView/PoUp/ButtonContainer/SecondaryButton/Background/ButtonLabel;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Views/PopUpView.prefab;PopUpView/PoUp/ButtonContainer/SecondaryButton/Background;Image;4585B4FF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Views/PopUpView.prefab;PopUpView/PoUp/ButtonContainer/SecondaryButton;Image;FFFFFF00
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Views/PopUpView.prefab;PopUpView/PoUp/PopUpHeader;TextMeshProUGUI;FFFFFFFF
+  - Assets/PhotonMenu/UIPrototype/Prefabs/Views/PopUpView.prefab;PopUpView/PoUp/PopUpText;TextMeshProUGUI;FFFFFF80
+  Palette: {fileID: 11400000, guid: 704d4d8cbcad3e9478b4658b3b2c4014, type: 2}

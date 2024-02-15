@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4df07fda2331400f9a58112b0d268e50, type: 3}
+  m_Name: FusionMenuConfig
+  m_EditorClassIdentifier: 
+  _maxPlayers: 4
+  _partyCodeLength: 6
+  _availableAppVersions:
+  - v1.0-fusion-demo
+  _availableRegions:
+  - '[Best]'
+  - eu
+  - sa
+  - us
+  _availableScenes:
+  - {fileID: 102900000, guid: fbd15a0cc3b2cee488ce7272d2f4f146, type: 3}
+  - {fileID: 102900000, guid: 10a09311c051d1a47bcfacdc204a352a, type: 3}
+  _scenes:
+  - FusionDemoGameplayHost
+  - FusionDemoGameplayShared
+  _machineGuid: {fileID: -755480892457977500, guid: d2d891b59b56f4e4eb6f993d5bf4b7e1,
+    type: 3}
+  _gameModes: 0000000001000000

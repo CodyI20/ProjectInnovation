@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcb74d6c5d77894ab600ae2d9c21d94, type: 3}
+  m_Name: DefaultColorPalette
+  m_EditorClassIdentifier: 
+  Mapping:
+  - Source: 00000080
+    Target: {r: 0, g: 0, b: 0, a: 0.5019608}
+  - Source: 0A1B33FF
+    Target: {r: 0.039215688, g: 0.105882354, b: 0.2, a: 1}
+  - Source: 1A3F69FF
+    Target: {r: 0.101960786, g: 0.24705882, b: 0.4117647, a: 1}
+  - Source: 316E9A80
+    Target: {r: 0.19215687, g: 0.43137255, b: 0.6039216, a: 0.5019608}
+  - Source: 316E9AFF
+    Target: {r: 0.19215687, g: 0.43137255, b: 0.6039216, a: 1}
+  - Source: 4585B4FF
+    Target: {r: 0.27058825, g: 0.52156866, b: 0.7058824, a: 1}
+  - Source: 6BB3E9FF
+    Target: {r: 0.41960785, g: 0.7019608, b: 0.9137255, a: 1}
+  - Source: 72CBFFFF
+    Target: {r: 0.44705883, g: 0.79607844, b: 1, a: 1}
+  - Source: FFFFFF00
+    Target: {r: 1, g: 1, b: 1, a: 0}
+  - Source: FFFFFF0D
+    Target: {r: 1, g: 1, b: 1, a: 0.050980393}
+  - Source: FFFFFF80
+    Target: {r: 1, g: 1, b: 1, a: 0.5019608}
+  - Source: FFFFFFFF
+    Target: {r: 1, g: 1, b: 1, a: 1}
