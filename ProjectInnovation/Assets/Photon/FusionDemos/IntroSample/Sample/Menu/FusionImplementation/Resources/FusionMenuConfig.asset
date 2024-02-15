@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df07fda2331400f9a58112b0d268e50, type: 3}
   m_Name: FusionMenuConfig
   m_EditorClassIdentifier: 
-  _maxPlayers: 4
+  _maxPlayers: 6
   _partyCodeLength: 6
   _availableAppVersions:
   - v1.0-fusion-demo
