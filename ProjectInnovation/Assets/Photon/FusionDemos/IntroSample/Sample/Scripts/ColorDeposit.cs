@@ -1,7 +1,7 @@
 using Fusion;
 using UnityEngine;
 
-namespace FusionDemo {
+namespace FusionUtils {
   public abstract class ColorDeposit : NetworkBehaviour, IInteractable {
     public abstract void Interact(NetworkRunner runner, PlayerRef playerInteracting);
 

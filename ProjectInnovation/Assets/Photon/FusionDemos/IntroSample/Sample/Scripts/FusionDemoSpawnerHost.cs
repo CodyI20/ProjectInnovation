@@ -3,7 +3,7 @@ using Fusion;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace FusionDemo {
+namespace FusionUtils {
   /// <summary>
   /// Class responsible to spawn the player avatar with the requested skin for each player.
   /// </summary>

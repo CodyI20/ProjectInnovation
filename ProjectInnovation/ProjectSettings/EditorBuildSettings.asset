@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Photon/FusionDemos/IntroSample/Sample/Scenes/FusionDemoMenu.unity
+    path: Assets/Photon/FusionDemos/IntroSample/Sample/Scenes/Menu.unity
     guid: c3ffe7353c670464cbfd03781bc51365
   - enabled: 1
-    path: Assets/Photon/FusionDemos/IntroSample/Sample/Scenes/FusionDemoGameplayShared.unity
+    path: Assets/Photon/FusionDemos/IntroSample/Sample/Scenes/GameplayShared.unity
     guid: 10a09311c051d1a47bcfacdc204a352a
   - enabled: 1
     path: Assets/Photon/FusionDemos/IntroSample/Sample/Scenes/FusionDemoGameplayHost.unity

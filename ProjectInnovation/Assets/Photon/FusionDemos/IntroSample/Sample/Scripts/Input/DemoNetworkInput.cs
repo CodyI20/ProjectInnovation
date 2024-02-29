@@ -1,6 +1,6 @@
 ﻿using Fusion;
 
-namespace FusionDemo {
+namespace FusionUtils {
   /// <summary>
   /// Struct that will be used to read and write the inputs for a player
   /// </summary>

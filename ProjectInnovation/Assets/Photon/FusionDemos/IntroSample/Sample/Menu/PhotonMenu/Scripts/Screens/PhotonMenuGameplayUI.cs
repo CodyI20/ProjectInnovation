@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using Fusion;
 using TMPro;
@@ -6,6 +7,9 @@ using UnityEngine;
 
 namespace Photon.Menu {
   public class PhotonMenuGameplayUI : PhotonMenuUIScreen {
+
+    public static event Action OnPlayerConnect;
+
     [SerializeField] private TMP_Text _codeText;
     [SerializeField] private TMP_Text _informationalVersion;
     [SerializeField] protected TMP_Text _playersText;
@@ -58,6 +62,8 @@ namespace Photon.Menu {
       
       var maxPlayers = Connection.MaxPlayerCount;
       var currentPlayersCount = usernames.Count.ToString();
+
+            OnPlayerConnect?.Invoke();
       
       _playersCountText.SetText(currentPlayersCount);
       _playersMaxCountText.SetText($"/{maxPlayers}");

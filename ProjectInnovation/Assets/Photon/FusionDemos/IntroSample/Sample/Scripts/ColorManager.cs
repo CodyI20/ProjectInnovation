@@ -2,7 +2,7 @@
 using Fusion;
 using UnityEngine;
 
-namespace FusionDemo {
+namespace FusionUtils {
   /// <summary>
   /// Color merge struct will hold the color requested and the necessary colors to mix.
   /// </summary>

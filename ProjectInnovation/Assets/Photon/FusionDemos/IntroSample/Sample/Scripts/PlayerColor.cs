@@ -2,7 +2,7 @@
 using Fusion;
 using UnityEngine;
 
-namespace FusionDemo {
+namespace FusionUtils {
   /// <summary>
   /// Class for indicate the player active color.
   /// </summary>

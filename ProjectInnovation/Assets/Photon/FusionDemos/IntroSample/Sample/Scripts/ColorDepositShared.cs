@@ -1,7 +1,7 @@
 using Fusion;
 using UnityEngine;
 
-namespace FusionDemo {
+namespace FusionUtils {
   /// <summary>
   /// Interactable class for the object that will be colored by the player in shared mode.
   /// </summary>

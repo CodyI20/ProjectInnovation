@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace FusionDemo {
+namespace FusionUtils {
   public class MobileInput : MonoBehaviour {
     public Vector2 JoystickDirection { get; private set; }
 

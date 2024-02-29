@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FusionDemo {
+namespace FusionUtils {
   public class PlayerColorSphere : MonoBehaviour {
     [SerializeField] private PlayerColor _playerColor;
     [SerializeField] private MeshRenderer _meshRenderer;

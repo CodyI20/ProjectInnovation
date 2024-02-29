@@ -4,7 +4,7 @@ using Fusion;
 using Photon.Menu;
 using UnityEngine;
 
-namespace FusionDemo {
+namespace FusionUtils {
   public class PlayerSettingsView : PhotonMenuUIScreen {
     // List of avatars
     [SerializeField] private List<NetworkPrefabRef> _availableHostModeAvatars;

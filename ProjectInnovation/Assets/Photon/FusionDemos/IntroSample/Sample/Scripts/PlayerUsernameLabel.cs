@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace FusionDemo {
+namespace FusionUtils {
   /// <summary>
   /// Class responsible for displaying the player username on top of the avatar.
   /// </summary>

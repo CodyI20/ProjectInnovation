@@ -1,7 +1,7 @@
 using Fusion;
 using UnityEngine;
 
-namespace FusionDemo {
+namespace FusionUtils {
   /// <summary>
   /// Class responsible for make the player able to interact with Interactable objects on the world in host mode.
   /// </summary>

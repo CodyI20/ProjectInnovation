@@ -1,7 +1,7 @@
 using Fusion;
 using UnityEngine;
 
-namespace FusionDemo {
+namespace FusionUtils {
   /// <summary>
   /// A simple networked player movement class for host/server mode.
   /// </summary>

@@ -4,7 +4,7 @@ using Fusion;
 using Fusion.Sockets;
 using UnityEngine;
 
-namespace FusionDemo {
+namespace FusionUtils {
   public class DemoInputPooling : MonoBehaviour, INetworkRunnerCallbacks {
     // Pooling the input
     public void OnInput(NetworkRunner runner, NetworkInput input) {
