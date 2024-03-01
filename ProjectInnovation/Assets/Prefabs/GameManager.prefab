@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b94ee3149d606c42a52057b1bb88a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playersNeededToStart: 2
   timeForTurn: 60
-  playersInMatch: []
 --- !u!114 &8507766624629640538
 MonoBehaviour:
   m_ObjectHideFlags: 0

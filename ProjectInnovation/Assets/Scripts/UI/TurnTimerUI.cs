@@ -4,62 +4,39 @@ using Fusion;
 
 public class TurnTimerUI : NetworkBehaviour
 {
-    private bool isTimerActive { get; set;}
-    private float currentTurnTime { get; set;}
+    [Networked] private bool isTimerActive { get; set; } = false;
+    private float currentTurnTime;
 
     public GameObject TurnTimer { get; private set; }
     private TMP_Text timerText { get; set; }
-    private ChangeDetector _changeDetector;
+
 
     public override void Spawned()
     {
-        // Get the change detector.
-        _changeDetector = GetChangeDetector(ChangeDetector.Source.SnapshotTo, false);
-    }
-
-    private void Awake()
-    {
+        base.Spawned();
         timerText = GetComponent<TMP_Text>();
-    }
-
-    private void OnEnable()
-    {
-        GameManager.Instance.OnMatchStart += SetGameObjectActive;
-    }
-
-    private void OnDisable()
-    {
-        GameManager.Instance.OnMatchStart -= SetGameObjectActive;
-    }
-
-    private void Start()
-    {
         gameObject.SetActive(false);
     }
 
-    void SetGameObjectActive()
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_SetGameObjectActive()
     {
+        Debug.Log("SetGameObjectActive!!!!!!!!!!!!!!!!!!!!");
         isTimerActive = true;
         gameObject.SetActive(true);
     }
 
-    
-    void RpcUpdateTimerText(float updatedTime)
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    void RPC_UpdateTimerText(float updatedTime)
     {
-        currentTurnTime = updatedTime;
+        timerText.text = updatedTime.ToString("F0");
     }
 
-    private void Update()
+    public override void Render()
     {
         if (isTimerActive)
         {
-            UpdateTimerText();
-            RpcUpdateTimerText(GameManager.Instance.CurrentTurnTime);
+            RPC_UpdateTimerText(GameManager.Instance.CurrentTurnTime);
         }
-    }
-
-    void UpdateTimerText()
-    {
-        timerText.text = currentTurnTime.ToString("F0");
     }
 }

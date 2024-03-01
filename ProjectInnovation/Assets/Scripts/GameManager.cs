@@ -13,7 +13,7 @@ public class GameManager : Singleton<GameManager>
 {
     public event Action<PlayerRef> OnPlayerTurnStart;
     public event Action<PlayerRef> OnPlayerTurnEnd;
-    public event Action OnMatchStart;
+    public static event Action OnMatchStart;
 
     [SerializeField, Tooltip("The amount of players that are needed to start the match.")] private int playersNeededToStart = 2;
 
@@ -25,7 +25,6 @@ public class GameManager : Singleton<GameManager>
     private List<PlayerRef> playersInMatch;
     private int currentPlayerIndex;
     private bool canCheckTime = false;
-
 
     public void StartMatch()
     {
