@@ -63,6 +63,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBlueShared
       objectReference: {fileID: 0}
+    - target: {fileID: 6867017121507484276, guid: 53a23774434104b4eace4d5a59efe7f8,
+        type: 3}
+      propertyPath: SortKey
+      value: 2507934533
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528042662267152485, guid: 53a23774434104b4eace4d5a59efe7f8,
+        type: 3}
+      propertyPath: SortKey
+      value: 380272860
+      objectReference: {fileID: 0}
     - target: {fileID: 8433023596025763233, guid: 53a23774434104b4eace4d5a59efe7f8,
         type: 3}
       propertyPath: SortKey

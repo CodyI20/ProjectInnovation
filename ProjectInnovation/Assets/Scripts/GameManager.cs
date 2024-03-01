@@ -18,15 +18,20 @@ public class GameManager : Singleton<GameManager>
     [SerializeField, Tooltip("The amount of players that are needed to start the match.")] private int playersNeededToStart = 2;
 
     [SerializeField] private float timeForTurn = 10f;
-    private float currentTurnTime;
     public float TimeForTurn { get { return timeForTurn; } }
-    public float CurrentTurnTime { get { return currentTurnTime; } }
+    [Networked] public float CurrentTurnTime { get; set;}
 
     private List<PlayerRef> playersInMatch;
-    private int currentPlayerIndex;
-    private bool canCheckTime = false;
+    private int currentPlayerIndex = 0;
+    [Networked] private bool canCheckTime { get; set; } = false;
 
-    public void StartMatch()
+    public override void Spawned()
+    {
+        base.Spawned();
+
+    }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_StartMatch()
     {
         playersInMatch = new List<PlayerRef>(Runner.ActivePlayers.ToList());
         if (playersInMatch.Count < playersNeededToStart)
@@ -37,39 +42,42 @@ public class GameManager : Singleton<GameManager>
         else
         {
             currentPlayerIndex = 0;
-            StartPlayerTurn();
+            RPC_StartPlayerTurn();
             Debug.Log("Match started!");
             OnMatchStart?.Invoke();
             canCheckTime = true;
         }
     }
 
-    public void StartPlayerTurn()
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_StartPlayerTurn()
     {
-        currentTurnTime = timeForTurn;
+        CurrentTurnTime = timeForTurn;
         OnPlayerTurnStart?.Invoke(playersInMatch[currentPlayerIndex]);
     }
 
-    void CheckTurnTime()
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    void RPC_CheckTurnTime()
     {
         if(!canCheckTime) return;
-        if (currentTurnTime > 0)
+        if (CurrentTurnTime > 0)
         {
-            currentTurnTime -= Time.deltaTime;
+            CurrentTurnTime -= Time.deltaTime;
         }
         else
         {
-            EndPlayerTurn();
+            RPC_EndPlayerTurn();
         }
     }
 
-    private void Update()
+    public override void Render()
     {
-        CheckTurnTime();
+        base.Render();
+        RPC_CheckTurnTime();
     }
 
-
-    public void EndPlayerTurn()
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_EndPlayerTurn()
     {
         OnPlayerTurnEnd?.Invoke(playersInMatch[currentPlayerIndex]);
         currentPlayerIndex++;
@@ -77,7 +85,7 @@ public class GameManager : Singleton<GameManager>
         {
             currentPlayerIndex = 0;
         }
-        StartPlayerTurn();
+        RPC_StartPlayerTurn();
     }
 
     public void EndMatch()

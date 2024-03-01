@@ -1567,6 +1567,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 764047076}
     m_Modifications:
+    - target: {fileID: 650587373622967378, guid: b652b4046b5f8f44a821e035f57fbef6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 650587373622967378, guid: b652b4046b5f8f44a821e035f57fbef6,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 650587373622967378, guid: b652b4046b5f8f44a821e035f57fbef6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 650587373622967378, guid: b652b4046b5f8f44a821e035f57fbef6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 930715289067673248, guid: b652b4046b5f8f44a821e035f57fbef6,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1667,6 +1687,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 966063819531704109, guid: b652b4046b5f8f44a821e035f57fbef6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 966063819531704109, guid: b652b4046b5f8f44a821e035f57fbef6,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 966063819531704109, guid: b652b4046b5f8f44a821e035f57fbef6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 966063819531704109, guid: b652b4046b5f8f44a821e035f57fbef6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3454681262766993356, guid: b652b4046b5f8f44a821e035f57fbef6,
         type: 3}
       propertyPath: m_Name
@@ -1677,6 +1717,26 @@ PrefabInstance:
       propertyPath: _menuCamera
       value: 
       objectReference: {fileID: 1880763565}
+    - target: {fileID: 7148692677668579995, guid: b652b4046b5f8f44a821e035f57fbef6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148692677668579995, guid: b652b4046b5f8f44a821e035f57fbef6,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148692677668579995, guid: b652b4046b5f8f44a821e035f57fbef6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148692677668579995, guid: b652b4046b5f8f44a821e035f57fbef6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7185277152981474002, guid: b652b4046b5f8f44a821e035f57fbef6,
         type: 3}
       propertyPath: _screens.Array.data[6]
