@@ -21,9 +21,7 @@ public class CookingManager : NetworkBehaviour
 
     private IEnumerator Cooking(CookingProcess cookingProcess)
     {
-        Debug.Log("Cooking started");
         yield return new WaitForSeconds(cookingProcess.CookingTime);
-        Debug.Log("Cooking finished");
         OnCookingFinished?.Invoke();
     }
 

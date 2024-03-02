@@ -10,7 +10,10 @@ namespace CookingEnums
     {
         Boiling,
         Frying,
-        Baking
+        Baking,
+        Chopping,
+        Grating,
+        Pouring
     }
     public enum CookingIngredient
     {

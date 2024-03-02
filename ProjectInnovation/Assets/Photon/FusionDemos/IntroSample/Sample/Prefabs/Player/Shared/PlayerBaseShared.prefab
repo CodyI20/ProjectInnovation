@@ -29,18 +29,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170593607248247010}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5114955830305339579}
   - {fileID: 7340220711464551862}
-  m_Father: {fileID: 1549846504553722949}
+  m_Father: {fileID: 8757309397812467755}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 203.16296, y: -10}
+  m_AnchoredPosition: {x: -706.83704, y: -10}
   m_SizeDelta: {x: 406.3259, y: 849.4912}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6013167103649801723
@@ -1247,7 +1247,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 674611162627621437}
   m_Father: {fileID: 1549846504553722949}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1587,7 +1588,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7337141693272521212}
-  - {fileID: 674611162627621437}
   - {fileID: 8757309397812467755}
   m_Father: {fileID: 2558452419934692685}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1808,16 +1808,6 @@ PrefabInstance:
       propertyPath: SortKey
       value: 2702814801
       objectReference: {fileID: 0}
-    - target: {fileID: 33752559344783098, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: m_text
-      value: Pour
-      objectReference: {fileID: 0}
-    - target: {fileID: 295978416101620246, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 141
-      objectReference: {fileID: 0}
     - target: {fileID: 1401057720636143241, guid: 6ba0ce8045f117d4f808ea8a97179f62,
         type: 3}
       propertyPath: m_Name
@@ -1827,55 +1817,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1653886193256590253, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 11400000, guid: 9c2e151c4b43cb44c86da41d387a3461,
-        type: 2}
-    - target: {fileID: 2123416796976463101, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 11400000, guid: 9c2e151c4b43cb44c86da41d387a3461,
-        type: 2}
-    - target: {fileID: 2762200292050855961, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: m_Name
-      value: Frying
-      objectReference: {fileID: 0}
-    - target: {fileID: 3197458805983695617, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: m_Name
-      value: Pouring
-      objectReference: {fileID: 0}
-    - target: {fileID: 3394156427499262033, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 11400000, guid: 9c2e151c4b43cb44c86da41d387a3461,
-        type: 2}
-    - target: {fileID: 4046531200558904066, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 11400000, guid: 9c2e151c4b43cb44c86da41d387a3461,
-        type: 2}
-    - target: {fileID: 4570183222344285477, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 394
-      objectReference: {fileID: 0}
-    - target: {fileID: 5032987212335612848, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5436219541350238729, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: m_Name
-      value: Boiling
       objectReference: {fileID: 0}
     - target: {fileID: 7286384358774050859, guid: 6ba0ce8045f117d4f808ea8a97179f62,
         type: 3}
@@ -1976,35 +1917,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7308636670783394968, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: m_Name
-      value: Chopping
-      objectReference: {fileID: 0}
-    - target: {fileID: 7977917575424892952, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -120
-      objectReference: {fileID: 0}
-    - target: {fileID: 7981538677249540359, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: m_text
-      value: 'Chop
-
-'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8130775018280180092, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: m_text
-      value: 'Fry
-
-'
-      objectReference: {fileID: 0}
-    - target: {fileID: 9097917763060586949, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -382
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
