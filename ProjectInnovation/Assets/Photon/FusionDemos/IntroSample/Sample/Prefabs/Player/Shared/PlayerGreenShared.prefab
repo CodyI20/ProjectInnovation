@@ -13,6 +13,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerGreenShared
       objectReference: {fileID: 0}
+    - target: {fileID: 3551434888716120404, guid: 532d7ebb427b45744ac0d0e2ef705bdc,
+        type: 3}
+      propertyPath: SortKey
+      value: 3488016813
+      objectReference: {fileID: 0}
     - target: {fileID: 3879213446287961864, guid: 532d7ebb427b45744ac0d0e2ef705bdc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -68,10 +73,25 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 98ab0c196b4cb764d93825f25c3551fe, type: 2}
+    - target: {fileID: 4220771754652117211, guid: 532d7ebb427b45744ac0d0e2ef705bdc,
+        type: 3}
+      propertyPath: SortKey
+      value: 2221574495
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991984277735484184, guid: 532d7ebb427b45744ac0d0e2ef705bdc,
+        type: 3}
+      propertyPath: SortKey
+      value: 623733562
+      objectReference: {fileID: 0}
     - target: {fileID: 5267035940838254641, guid: 532d7ebb427b45744ac0d0e2ef705bdc,
         type: 3}
       propertyPath: SortKey
       value: 724889402
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770285840501718302, guid: 532d7ebb427b45744ac0d0e2ef705bdc,
+        type: 3}
+      propertyPath: SortKey
+      value: 3837276712
       objectReference: {fileID: 0}
     - target: {fileID: 7159827030371065828, guid: 532d7ebb427b45744ac0d0e2ef705bdc,
         type: 3}

@@ -1,22 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
+using CookingEnums;
 
 [CreateAssetMenu(fileName = "New Recipe", menuName = "Recipe")]
 public class Recipe : ScriptableObject
 {
-    public string recipeTitle;
-    public string[] items;
+    [Tooltip("Make sure the asset name is the same as the Recipe Title in order to avoid confusion")] public FinalDishes recipeTitle;
+    public CookingIngredient[] items;
     public Image dishVisual;
-
-#if UNITY_EDITOR
-    [ExecuteInEditMode]
-    private void OnValidate()
-    {
-        if (!Application.isPlaying)
-        {
-            recipeTitle = name;
-        }
-    }
-#endif
 }

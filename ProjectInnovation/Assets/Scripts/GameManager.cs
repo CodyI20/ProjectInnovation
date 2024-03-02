@@ -19,7 +19,7 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private float timeForTurn = 10f;
     public float TimeForTurn { get { return timeForTurn; } }
-    [Networked] public float CurrentTurnTime { get; set;}
+    [HideInInspector][Networked] public float CurrentTurnTime { get; set;}
 
     private List<PlayerRef> playersInMatch;
     private int currentPlayerIndex = 0;

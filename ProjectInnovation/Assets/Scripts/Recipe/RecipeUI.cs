@@ -20,14 +20,14 @@ public class RecipeUI : NetworkBehaviour
         foreach (var item in recipeManager.items)
         {
             Debug.Log("Adding item: " + item);
-            Instantiate(new GameObject(), recipePanel.transform, false).AddComponent<TextMeshProUGUI>().SetText(item);
+            Instantiate(new GameObject(), recipePanel.transform, false).AddComponent<TextMeshProUGUI>().SetText(item.ToString());
         }
         SetRecipeTitle();
     }
 
     private void SetRecipeTitle()
     {
-        recipeTitleText.text = recipeManager.recipeTitle;
+        recipeTitleText.text = recipeManager.recipeTitle.ToString();
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)
