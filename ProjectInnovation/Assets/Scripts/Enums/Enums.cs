@@ -26,7 +26,8 @@ namespace CookingEnums
         Flour,
         Sugar,
         Salt,
-        Pepper
+        Pepper,
+        Vinegar
     }
     public enum FinalDishes
     {

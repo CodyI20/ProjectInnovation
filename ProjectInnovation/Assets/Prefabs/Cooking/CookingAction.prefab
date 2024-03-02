@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 6571581399955528355}
   - component: {fileID: 501255344834756145}
   - component: {fileID: 5007044638040825400}
+  - component: {fileID: 4765066285971902458}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -168,8 +169,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 435.83508, y: 3.846201}
-  m_SizeDelta: {x: 1114.7544, y: 596.5209}
+  m_AnchoredPosition: {x: 489, y: 0.000009536743}
+  m_SizeDelta: {x: 1225.2217, y: 596.5209}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &501255344834756145
 CanvasRenderer:
@@ -209,6 +210,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4765066285971902458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5880593542106406080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a78bc637f1aa8cc4bbda7cae34b595a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cookingManager: {fileID: 0}
+  cookingAnimator: {fileID: 0}
 --- !u!1 &7007033007809169412
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,12 +346,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 5880593542106406080}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CookingManager, Assembly-CSharp
         m_MethodName: StartCooking
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: 9c2e151c4b43cb44c86da41d387a3461,
+            type: 2}
           m_ObjectArgumentAssemblyTypeName: CookingProcess, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
