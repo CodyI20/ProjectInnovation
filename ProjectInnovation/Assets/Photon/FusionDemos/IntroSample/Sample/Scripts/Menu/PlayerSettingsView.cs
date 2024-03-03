@@ -13,7 +13,7 @@ namespace FusionUtils {
     [SerializeField] private NetworkProjectConfigAsset _networkProjectConfig;
 
     private GameObject _currentAvatarModel;
-    //private Quaternion _prevAvatarRotation;
+    private Quaternion _prevAvatarRotation;
     private List<NetworkPrefabRef> _availableAvatars;
 
     // Current selected avatar
@@ -64,7 +64,7 @@ namespace FusionUtils {
 
     private void RenderAvatar() {
       if (_currentAvatarModel) {
-        //_prevAvatarRotation = _currentAvatarModel.transform.rotation;
+        _prevAvatarRotation = _currentAvatarModel.transform.rotation;
         Destroy(_currentAvatarModel);
       }
 
@@ -76,7 +76,7 @@ namespace FusionUtils {
       var model = NetworkProjectConfig.Config.PrefabTable.Load(NetworkProjectConfig.Config.PrefabTable.GetId((NetworkObjectGuid)prefabRef), true);
       _currentAvatarModel = Instantiate(model.gameObject, _avatarHolder);
       _currentAvatarModel.AddComponent<RotateAvatar>();
-      //_currentAvatarModel.transform.rotation = _prevAvatarRotation;
+      _currentAvatarModel.transform.rotation = _prevAvatarRotation;
     }
   }
 }
