@@ -99,6 +99,11 @@ PrefabInstance:
       propertyPath: SortKey
       value: 380272860
       objectReference: {fileID: 0}
+    - target: {fileID: 7958709912660035517, guid: 53a23774434104b4eace4d5a59efe7f8,
+        type: 3}
+      propertyPath: SortKey
+      value: 2833179503
+      objectReference: {fileID: 0}
     - target: {fileID: 8433023596025763233, guid: 53a23774434104b4eace4d5a59efe7f8,
         type: 3}
       propertyPath: SortKey
