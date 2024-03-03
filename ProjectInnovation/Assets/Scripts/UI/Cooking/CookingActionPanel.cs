@@ -24,12 +24,14 @@ public class CookingActionPanel : MonoBehaviour
     {
         cookingManager.OnCookingStarted += CookingStarted;
         cookingManager.OnCookingFinished += CookingFinished;
+        cookingManager.OnCookingInterrupted += CookingInterrupted;
     }
 
     private void OnDisable()
     {
         cookingManager.OnCookingStarted -= CookingStarted;
         cookingManager.OnCookingFinished -= CookingFinished;
+        cookingManager.OnCookingInterrupted -= CookingInterrupted;
     }
 
     //Use this method when setting the animation type (with an event like button press)
@@ -47,6 +49,13 @@ public class CookingActionPanel : MonoBehaviour
     public void CookingFinished()
     {
         Debug.Log("Cooking finished");
+        cookingAnimator.SetBool(cookingType.ToString(),false);
+        gameObject.SetActive(false);
+    }
+
+    public void CookingInterrupted()
+    {
+        Debug.Log("Cooking interrupted");
         cookingAnimator.SetBool(cookingType.ToString(),false);
         gameObject.SetActive(false);
     }

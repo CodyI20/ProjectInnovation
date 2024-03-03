@@ -73,6 +73,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBlueShared
       objectReference: {fileID: 0}
+    - target: {fileID: 4923480015629357396, guid: 53a23774434104b4eace4d5a59efe7f8,
+        type: 3}
+      propertyPath: SortKey
+      value: 994704293
+      objectReference: {fileID: 0}
     - target: {fileID: 5449405997131872091, guid: 53a23774434104b4eace4d5a59efe7f8,
         type: 3}
       propertyPath: SortKey
@@ -114,6 +119,11 @@ PrefabInstance:
       propertyPath: NetworkedBehaviours.Array.data[1]
       value: 
       objectReference: {fileID: 4276938701529782730}
+    - target: {fileID: 8893051498228897185, guid: 53a23774434104b4eace4d5a59efe7f8,
+        type: 3}
+      propertyPath: SortKey
+      value: 2534664343
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     m_RemovedGameObjects: []

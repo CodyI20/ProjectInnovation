@@ -4,7 +4,8 @@ namespace CookingEnums
     {
         Idle,
         Cooking,
-        Done
+        Done,
+        Interrupted
     }
     public enum CookingType
     {
