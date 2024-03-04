@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Fusion;
 using Photon.Menu;
 using UnityEngine;
+using TMPro;
 
 namespace FusionUtils
 {
@@ -11,7 +12,7 @@ namespace FusionUtils
         // List of models
         [SerializeField] private List<GameObject> _achievementsModels;
         [SerializeField] private Transform _achievementHolder;
-        [SerializeField] private NetworkProjectConfigAsset _networkProjectConfig;
+        [SerializeField] private TextMeshProUGUI _achievementName;
 
         private GameObject _currentAchievementModel;
         private Quaternion _prevModelRotation;
@@ -20,19 +21,6 @@ namespace FusionUtils
         // Current selected achievement model
         private int _currentIndex;
 
-        private NetworkProjectConfigAsset NetworkProjectConfig
-        {
-            get
-            {
-                if (_networkProjectConfig == null)
-                {
-                    _networkProjectConfig = NetworkProjectConfigAsset.Global;
-                }
-
-                return _networkProjectConfig;
-            }
-            set => _networkProjectConfig = value;
-        }
 
         public override void Show()
         {
@@ -84,6 +72,7 @@ namespace FusionUtils
 
             _currentAchievementModel = Instantiate(prefab, _achievementHolder);
             _currentAchievementModel.AddComponent<RotateAvatar>();
+            _achievementName.text = prefab.name;
             //_currentAchievementModel.transform.rotation = _prevModelRotation;
         }
     }
