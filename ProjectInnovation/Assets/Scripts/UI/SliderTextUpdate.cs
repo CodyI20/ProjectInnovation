@@ -27,5 +27,9 @@ public class SliderTextUpdate : NetworkBehaviour
     public void RPC_UpdateText()
     {
         _percentageText.text = $"{_slider.value * 100}%";
+        if(_slider.value == 1)
+        {
+            GameManager.Instance.RPC_PlayerWin();
+        }
     }
 }

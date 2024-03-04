@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager>
 {
     public event Action<PlayerRef> OnPlayerTurnStart;
     public event Action<PlayerRef> OnPlayerTurnEnd;
+    public event Action<PlayerRef> OnPlayerWin;
     public static event Action OnMatchStart;
 
     [SerializeField, Tooltip("The amount of players that are needed to start the match.")] private int playersNeededToStart = 2;
@@ -21,6 +22,8 @@ public class GameManager : Singleton<GameManager>
     public float TimeForTurn { get { return timeForTurn; } }
     [HideInInspector][Networked] public float CurrentTurnTime { get; set;}
 
+
+    //Make a public get private set property for the playersInMatch list
     private List<PlayerRef> playersInMatch;
     private int currentPlayerIndex = 0;
     [Networked] private bool canCheckTime { get; set; } = false;
@@ -68,6 +71,14 @@ public class GameManager : Singleton<GameManager>
         {
             RPC_EndPlayerTurn();
         }
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_PlayerWin()
+    {
+        Debug.Log($"Player {playersInMatch[currentPlayerIndex]} won!");
+        Time.timeScale = 0f;
+        OnPlayerWin?.Invoke(playersInMatch[currentPlayerIndex]);
     }
 
     public override void Render()

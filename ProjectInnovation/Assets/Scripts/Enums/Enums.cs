@@ -34,6 +34,7 @@ namespace CookingEnums
     {
         Noodles,
         Borscht,
-        Pancakes
+        Pancakes,
+        Sour_Cream
     }
 }
