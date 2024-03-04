@@ -7,7 +7,7 @@ using CookingEnums;
 
 public class RecipeManager : NetworkBehaviour
 {
-    public HashSet<CookingIngredient> items { get; private set; } = new HashSet<CookingIngredient>();
+    public HashSet<RawIngredients> items { get; private set; } = new HashSet<RawIngredients>();
     public FinalDishes recipeTitle { get; private set; }
 
     public event Action OnRecipeSet;

@@ -2063,9 +2063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsModal: 0
   _achievementsModels:
-  - RawGuidValue: 341693c6d9a269e42b2976704e30e73d
-  - RawGuidValue: a523a668e913c58488ccb685446fad50
-  - RawGuidValue: ad68526a377a6a446a68c708c62790af
+  - {fileID: 4409551512979381515, guid: a774b328c76cc724d992142aecc5dd48, type: 3}
   _achievementHolder: {fileID: 4194379}
   _networkProjectConfig: {fileID: -755480892457977500, guid: 6d823b0a877a8e14782cee109eaa608c,
     type: 3}

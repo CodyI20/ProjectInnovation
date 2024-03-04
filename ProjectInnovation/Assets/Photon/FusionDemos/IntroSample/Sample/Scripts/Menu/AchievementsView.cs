@@ -9,13 +9,13 @@ namespace FusionUtils
     public class AchievementsView : PhotonMenuUIScreen
     {
         // List of models
-        [SerializeField] private List<NetworkPrefabRef> _achievementsModels;
+        [SerializeField] private List<GameObject> _achievementsModels;
         [SerializeField] private Transform _achievementHolder;
         [SerializeField] private NetworkProjectConfigAsset _networkProjectConfig;
 
         private GameObject _currentAchievementModel;
         private Quaternion _prevModelRotation;
-        private List<NetworkPrefabRef> _avaliableModels;
+        private List<GameObject> _avaliableModels;
 
         // Current selected achievement model
         private int _currentIndex;
@@ -68,12 +68,6 @@ namespace FusionUtils
             RenderModel();
         }
 
-        public NetworkPrefabId GetSelectedSkin(Topologies topology)
-        {
-            _avaliableModels = _achievementsModels;
-            return NetworkProjectConfig.Config.PrefabTable.GetId((NetworkObjectGuid)_avaliableModels[_currentIndex]);
-        }
-
         private void RenderModel()
         {
             if (_currentAchievementModel)
@@ -82,16 +76,15 @@ namespace FusionUtils
                 Destroy(_currentAchievementModel);
             }
 
-            var prefabRef = _avaliableModels[_currentIndex];
-            if (!prefabRef.IsValid)
+            var prefab = _avaliableModels[_currentIndex];
+            if (!prefab)
             {
-                throw new ArgumentException($"Not valid.", nameof(prefabRef));
+                throw new ArgumentException($"Not valid.", nameof(prefab));
             }
 
-            var model = NetworkProjectConfig.Config.PrefabTable.Load(NetworkProjectConfig.Config.PrefabTable.GetId((NetworkObjectGuid)prefabRef), true);
-            _currentAchievementModel = Instantiate(model.gameObject, _achievementHolder);
+            _currentAchievementModel = Instantiate(prefab, _achievementHolder);
             _currentAchievementModel.AddComponent<RotateAvatar>();
-            _currentAchievementModel.transform.rotation = _prevModelRotation;
+            //_currentAchievementModel.transform.rotation = _prevModelRotation;
         }
     }
 }
