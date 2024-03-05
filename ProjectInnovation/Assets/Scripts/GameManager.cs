@@ -20,7 +20,7 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private float timeForTurn = 10f;
     public float TimeForTurn { get { return timeForTurn; } }
-    [HideInInspector][Networked] public float CurrentTurnTime { get; set;}
+    [HideInInspector][Networked] public float CurrentTurnTime { get; private set;}
 
 
     //Make a public get private set property for the playersInMatch list

@@ -2,14 +2,18 @@
 using CookingEnums;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 [RequireComponent(typeof(Button))]
 public class InventoryItem : MonoBehaviour
 {
+    public static event Action<RawIngredients> OnIngredientDeleted;
+
     private Inventory inventory;
     private Button button;
     [SerializeField] private TextMeshProUGUI amountText;
     [SerializeField] private RawIngredients item;
+
 
     private void Awake()
     {
@@ -43,6 +47,7 @@ public class InventoryItem : MonoBehaviour
 
     private void RemoveIngredient()
     {
+        OnIngredientDeleted?.Invoke(item);
         this.amount -= 1;
         amountText.text = this.amount.ToString();
         if(this.amount <= 0)
