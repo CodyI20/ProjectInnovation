@@ -13,13 +13,13 @@ GameObject:
   - component: {fileID: 3037518365845193710}
   - component: {fileID: 7243640004392935772}
   - component: {fileID: 7849042090831105228}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TestButtonFor%
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5676561371807613652
 RectTransform:
   m_ObjectHideFlags: 0
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 699664413098285560}
   - component: {fileID: 2199719013718799815}
   - component: {fileID: 8563770293173334991}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 7528042662267152485}
   - component: {fileID: 8997831377782981898}
   - component: {fileID: 531856636063771119}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RecipePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 5114955830305339579}
   - component: {fileID: 5656822666743722632}
   - component: {fileID: 1227293087027607157}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RecipeName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 6805616268899456105}
   - component: {fileID: 5986367715610829149}
   - component: {fileID: 3788248960082996237}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: YourTurn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -734,7 +734,7 @@ GameObject:
   - component: {fileID: 7004124399358209009}
   - component: {fileID: 2666745449554017354}
   - component: {fileID: 572404402766962217}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -915,11 +915,11 @@ MonoBehaviour:
   NestedObjects:
   - {fileID: 8893051498228897185}
   - {fileID: 7958709912660035517}
+  - {fileID: 7528042662267152485}
   - {fileID: 5986367715610829149}
   - {fileID: 5449405997131872091}
   - {fileID: 6867017121507484276}
   - {fileID: 2818679211911412497}
-  - {fileID: 7528042662267152485}
   NetworkedBehaviours:
   - {fileID: 6002094783793459348}
   - {fileID: 3246659850101724047}
@@ -1038,7 +1038,7 @@ GameObject:
   - component: {fileID: 5927667040512368964}
   - component: {fileID: 209742613312796417}
   - component: {fileID: 6926574367144567345}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CookButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1268,7 +1268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6841877058477042919}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1306,7 +1306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7340220711464551862}
   - component: {fileID: 80259160359748512}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Recipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1372,7 +1372,7 @@ GameObject:
   - component: {fileID: 306465620390348042}
   - component: {fileID: 4217297580837709761}
   - component: {fileID: 5449405997131872091}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SkipTurnButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1533,7 +1533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8757309397812467755}
   - component: {fileID: 719831708844772594}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AllTheTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1720,7 +1720,7 @@ GameObject:
   - component: {fileID: 5803776803234838778}
   - component: {fileID: 2481950794710662202}
   - component: {fileID: 6867017121507484276}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentPlayerTurn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1885,7 +1885,7 @@ GameObject:
   - component: {fileID: 3307625045225300886}
   - component: {fileID: 4222544882930850104}
   - component: {fileID: 7355944449825179015}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1904,8 +1904,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7337141693272521212}
   - {fileID: 8757309397812467755}
+  - {fileID: 7337141693272521212}
   m_Father: {fileID: 2558452419934692685}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1987,7 +1987,7 @@ GameObject:
   - component: {fileID: 2183200638886955899}
   - component: {fileID: 3462367980797644509}
   - component: {fileID: 8456169730009648338}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2302,6 +2302,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4462770285231656341}
+    - targetCorrespondingSourceObject: {fileID: 1476875383916997189, guid: 7ec180510c3e0d848969c4bc153e2a51,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8254674072288025291}
   m_SourcePrefab: {fileID: 100100000, guid: 7ec180510c3e0d848969c4bc153e2a51, type: 3}
 --- !u!1 &2830470505133877076 stripped
 GameObject:
@@ -2328,6 +2332,7 @@ MonoBehaviour:
   - {fileID: 7958709912660035517}
   NetworkedBehaviours:
   - {fileID: 4462770285231656341}
+  - {fileID: 8254674072288025291}
 --- !u!114 &4462770285231656341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2340,6 +2345,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7573e2c2ed00ec48a982b2cc6590412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8254674072288025291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2830470505133877076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0164d09ac316084facd256c1d937fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cookingManager: {fileID: 3168573680014785634}
 --- !u!114 &7042726016591761810 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5946434053833432195, guid: 7ec180510c3e0d848969c4bc153e2a51,
@@ -2395,11 +2413,6 @@ PrefabInstance:
       propertyPath: SortKey
       value: 2702814801
       objectReference: {fileID: 0}
-    - target: {fileID: -7259824697678030529, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: NetworkedBehaviours.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 1401057720636143241, guid: 6ba0ce8045f117d4f808ea8a97179f62,
         type: 3}
       propertyPath: m_Name
@@ -2408,6 +2421,16 @@ PrefabInstance:
     - target: {fileID: 1401057720636143241, guid: 6ba0ce8045f117d4f808ea8a97179f62,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3894827849798334420, guid: 6ba0ce8045f117d4f808ea8a97179f62,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000600843071675488, guid: 6ba0ce8045f117d4f808ea8a97179f62,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7286384358774050859, guid: 6ba0ce8045f117d4f808ea8a97179f62,
@@ -2510,11 +2533,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8921840941244194509, guid: 6ba0ce8045f117d4f808ea8a97179f62,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2530,6 +2548,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3168573680014785634 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1718992767988014668, guid: 6ba0ce8045f117d4f808ea8a97179f62,
+    type: 3}
+  m_PrefabInstance: {fileID: 4333058957129736750}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3410228476200817831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d90db90a1f83cee40b8ba1be2f4a8034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3410228476200817831 stripped

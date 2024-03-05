@@ -9,19 +9,31 @@ public class Inventory : NetworkBehaviour
 {
     public event Action<RawIngredients, int> OnIngredientAdded;
 
+    [SerializeField] private WheelSystem wheelSystem;
+    [SerializeField] private GameObject cookingMethodsTab;
     [SerializeField] private List<InventoryItem> inventoryItem;
+    [SerializeField] private CookingManager cookingManager;
     private Dictionary<RawIngredients, int> ingredients;
     private Dictionary<PreparedIngredients, int> preparedIngredients;
     private Dictionary<RawIngredients, int> tradeIngredients;
+
+    private void Awake()
+    {
+        if(cookingManager == null)
+        {
+            Debug.LogError("Cooking Manager is not assigned to the Inventory script. Please assign it in the inspector.");
+        }
+    }
 
     /**
      * Constructors
      */
 
-    private void Start()
+    public override void Spawned()
     {
         ingredients = new Dictionary<RawIngredients, int>();
         preparedIngredients = new Dictionary<PreparedIngredients, int>();
+        wheelSystem.GetInventory(this);
     }
 
     private void Update()
@@ -233,6 +245,16 @@ public class Inventory : NetworkBehaviour
             if (!HasPreparedIngredient(ingredient.Key, ingredient.Value))
                 return false;
         return true;
+    }
+
+    public GameObject GetCookingMethodsTab()
+    {
+        return cookingMethodsTab;
+    }
+
+    public CookingManager GetCookingManager()
+    {
+        return cookingManager;
     }
 
     /**
