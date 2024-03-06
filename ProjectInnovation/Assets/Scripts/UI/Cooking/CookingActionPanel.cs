@@ -23,14 +23,14 @@ public class CookingActionPanel : MonoBehaviour
     private void OnEnable()
     {
         cookingManager.OnCookingStarted += CookingStarted;
-        cookingManager.OnCookingFinished += CookingFinished;
+        CookingManager.OnCookingFinished += CookingFinished;
         cookingManager.OnCookingInterrupted += CookingInterrupted;
     }
 
     private void OnDisable()
     {
         cookingManager.OnCookingStarted -= CookingStarted;
-        cookingManager.OnCookingFinished -= CookingFinished;
+        CookingManager.OnCookingFinished -= CookingFinished;
         cookingManager.OnCookingInterrupted -= CookingInterrupted;
     }
 
@@ -46,7 +46,7 @@ public class CookingActionPanel : MonoBehaviour
         cookingAnimator.SetBool(cookingType.ToString(),true);
     }
 
-    public void CookingFinished()
+    public void CookingFinished(InventoryItem item, CookingProcess process)
     {
         Debug.Log("Cooking finished");
         cookingAnimator.SetBool(cookingType.ToString(),false);

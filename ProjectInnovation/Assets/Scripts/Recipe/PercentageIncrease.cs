@@ -12,7 +12,7 @@ public class PercentageIncrease : NetworkBehaviour
     {
         base.Spawned();
         _slider = GetComponent<Slider>();
-        _cookingManager.OnCookingFinished += RPC_UpdatePercentage;
+        CookingManager.OnCookingFinishedd += RPC_UpdatePercentage;
     }
 
     [Rpc(RpcSources.All, RpcTargets.All)]
@@ -27,6 +27,6 @@ public class PercentageIncrease : NetworkBehaviour
     public override void Despawned(NetworkRunner runner, bool hasState)
     {
         base.Despawned(runner, hasState);
-        _cookingManager.OnCookingFinished -= RPC_UpdatePercentage;
+        CookingManager.OnCookingFinishedd -= RPC_UpdatePercentage;
     }
 }

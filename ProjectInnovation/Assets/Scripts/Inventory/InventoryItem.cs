@@ -7,7 +7,7 @@ using System;
 [RequireComponent(typeof(Button))]
 public class InventoryItem : MonoBehaviour
 {
-    public static event Action<RawIngredients> OnIngredientDeleted;
+    public static event Action<InventoryItem> OnItemClicked;
 
     private Inventory inventory;
     private Button button;
@@ -29,13 +29,14 @@ public class InventoryItem : MonoBehaviour
     {
         inventory = GetComponentInParent<Inventory>();
         inventory.OnIngredientAdded += AddIngredient;
-        inventory.GetCookingManager().OnCookingFinished += RemoveIngredient;
+        CookingManager.OnCookingFinished += RemoveIngredient;
         button.onClick.AddListener(OpenMethodsTab);
     }
 
     private void OpenMethodsTab()
     {
         inventory.GetCookingMethodsTab().SetActive(true);
+        OnItemClicked?.Invoke(this);
     }
 
     private void AddIngredient(RawIngredients ingredient, int amount)
@@ -45,9 +46,9 @@ public class InventoryItem : MonoBehaviour
         amountText.text = this.amount.ToString();
     }
 
-    private void RemoveIngredient()
+    private void RemoveIngredient(InventoryItem item, CookingProcess process)
     {
-        OnIngredientDeleted?.Invoke(item);
+        //OnIngredientDeleted?.Invoke(this.item);
         this.amount -= 1;
         amountText.text = this.amount.ToString();
         if(this.amount <= 0)
@@ -59,7 +60,7 @@ public class InventoryItem : MonoBehaviour
     private void OnDisable()
     {
         inventory.OnIngredientAdded -= AddIngredient;
-        inventory.GetCookingManager().OnCookingFinished -= RemoveIngredient;
+        CookingManager.OnCookingFinished -= RemoveIngredient;
     }
 
 }

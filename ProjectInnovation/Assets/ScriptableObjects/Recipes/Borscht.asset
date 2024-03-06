@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Borscht
   m_EditorClassIdentifier: 
   recipeTitle: 1
-  items: 050000000200000006000000090000000800000004000000
+  recipeRequirements:
+  - rawIngredient: 5
+    cookingProcess: {fileID: 11400000, guid: 9c2e151c4b43cb44c86da41d387a3461, type: 2}
   dishVisual: {fileID: 0}

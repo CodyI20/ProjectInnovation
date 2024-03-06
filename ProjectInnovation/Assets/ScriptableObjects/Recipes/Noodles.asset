@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Noodles
   m_EditorClassIdentifier: 
   recipeTitle: 0
-  items: 01000000030000000400000005000000
+  recipeRequirements:
+  - rawIngredient: 5
+    cookingProcess: {fileID: 11400000, guid: 9c2e151c4b43cb44c86da41d387a3461, type: 2}
   dishVisual: {fileID: 0}

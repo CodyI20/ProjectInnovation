@@ -7,17 +7,25 @@ using CookingEnums;
 public class CookingManager : NetworkBehaviour
 {
     public event Action OnCookingStarted;
-    public event Action OnCookingFinished;
+    public static event Action<InventoryItem, CookingProcess> OnCookingFinished;
+    public static event Action OnCookingFinishedd;
     public event Action OnCookingInterrupted;
+
+    private InventoryItem inventoryItem;
 
     public override void Spawned()
     {
         base.Spawned();
         GameManager.Instance.OnPlayerTurnEnd += InterruptCooking;
+        InventoryItem.OnItemClicked += GetInventoryItem;
     }
 
     [HideInInspector][Networked] public CookingState _cookingState { get; private set; } = CookingState.Idle; //TODO check if it works with private set, if not, remove it
 
+    public void GetInventoryItem(InventoryItem inventoryItem)
+    {
+        this.inventoryItem = inventoryItem;
+    }
 
     public void StartCooking(CookingProcess cookingProcess)
     {
@@ -44,13 +52,15 @@ public class CookingManager : NetworkBehaviour
         }
         yield return new WaitForSeconds(cookingProcess.CookingTime);
         _cookingState = CookingState.Done;
-        OnCookingFinished?.Invoke();
+        OnCookingFinished?.Invoke(inventoryItem, cookingProcess);
+        OnCookingFinishedd?.Invoke();
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)
     {
         base.Despawned(runner, hasState);
         GameManager.Instance.OnPlayerTurnEnd -= InterruptCooking;
+        InventoryItem.OnItemClicked -= GetInventoryItem;
     }
 
 }

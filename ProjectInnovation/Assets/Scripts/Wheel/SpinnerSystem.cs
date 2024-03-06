@@ -47,7 +47,7 @@ public class WheelSystem : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-            LaunchWheel(null);
+            LaunchWheel(inventory);
         if (spinning) {
             if (rotatePoint != null)
                 transform.RotateAround(rotatePoint.position, Vector3.forward, randomForce * Time.deltaTime);

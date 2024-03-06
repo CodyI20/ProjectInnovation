@@ -17,7 +17,7 @@ public class RecipeUI : NetworkBehaviour
         base.Spawned();
         // Add all the items to the hashset
         recipeManager.OnRecipeSet += AddTextItems;
-        InventoryItem.OnIngredientDeleted += CrossOutItem;
+        CookingManager.OnCookingFinished += CrossOutItem;
     }
 
     private void AddTextItems()
@@ -25,7 +25,7 @@ public class RecipeUI : NetworkBehaviour
         foreach (var item in recipeManager.items)
         {
             Debug.Log("Adding item: " + item);
-            Instantiate(new GameObject(), recipePanel.transform, false).AddComponent<TextMeshProUGUI>().SetText(item.ToString());
+            Instantiate(new GameObject(), recipePanel.transform, false).AddComponent<TextMeshProUGUI>().SetText(item.rawIngredient.ToString());
         }
         AddToTextsList();
         SetRecipeTitle();
@@ -40,11 +40,11 @@ public class RecipeUI : NetworkBehaviour
         }
     }
 
-    private void CrossOutItem(RawIngredients item)
+    private void CrossOutItem(InventoryItem item, CookingProcess process)
     {
         foreach(var textItem in _texts)
         {
-            if(textItem.text == item.ToString())
+            if(textItem.text == item.Item.ToString())
             {
                 textItem.fontStyle = FontStyles.Strikethrough;
                 break;
@@ -61,6 +61,6 @@ public class RecipeUI : NetworkBehaviour
     {
         base.Despawned(runner, hasState);
         recipeManager.OnRecipeSet -= AddTextItems;
-        InventoryItem.OnIngredientDeleted -= CrossOutItem;
+        CookingManager.OnCookingFinished -= CrossOutItem;
     }
 }
