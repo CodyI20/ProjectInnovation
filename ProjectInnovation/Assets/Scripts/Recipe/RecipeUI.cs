@@ -3,9 +3,11 @@ using UnityEngine;
 using Fusion;
 using TMPro;
 using CookingEnums;
+using System;
 
 public class RecipeUI : NetworkBehaviour
 {
+    public static event Action OnItemCrossedOut;
     [SerializeField] private TMP_Text recipeTitleText;
     [SerializeField] private GameObject recipePanel;
     [SerializeField] private RecipeManager recipeManager;
@@ -44,10 +46,13 @@ public class RecipeUI : NetworkBehaviour
     {
         foreach(var textItem in _texts)
         {
-            if(textItem.text == item.Item.ToString())
+            foreach(var recipeItem in recipeManager.items)
             {
-                textItem.fontStyle = FontStyles.Strikethrough;
-                break;
+                if(textItem.text == item.ToString() && item.ToString()== recipeItem.rawIngredient.ToString() && process == recipeItem.cookingProcess)
+                {
+                    textItem.fontStyle = FontStyles.Strikethrough;
+                    OnItemCrossedOut?.Invoke();
+                }
             }
         }
     }

@@ -8,6 +8,6 @@ public class CookingProcess : ScriptableObject
     public CookingEnums.CookingType CookingType;
 
     [Header("Cooking FX")]
-    public Animation CookingAnimation;
+    public AnimationClip CookingAnimation;
     public AudioClip CookingSound;
 }

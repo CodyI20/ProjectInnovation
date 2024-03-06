@@ -2211,6 +2211,8 @@ MonoBehaviour:
   IsModal: 0
   _achievementsModels:
   - {fileID: 4409551512979381515, guid: a774b328c76cc724d992142aecc5dd48, type: 3}
+  - {fileID: 3616747845068020114, guid: ffddb73adc2ced84f9338b60f736e99c, type: 3}
+  - {fileID: 5419565569212473041, guid: e93985d977b8c5a44ba07aa28ead9408, type: 3}
   _achievementHolder: {fileID: 4194379}
   _achievementName: {fileID: 318326372}
 --- !u!1001 &1812608415

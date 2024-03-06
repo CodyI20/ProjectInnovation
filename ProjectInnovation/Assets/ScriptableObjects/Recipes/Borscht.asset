@@ -16,4 +16,6 @@ MonoBehaviour:
   recipeRequirements:
   - rawIngredient: 5
     cookingProcess: {fileID: 11400000, guid: 9c2e151c4b43cb44c86da41d387a3461, type: 2}
+  - rawIngredient: 2
+    cookingProcess: {fileID: 11400000, guid: ebea65a442bbfa1469a77e6548a903fe, type: 2}
   dishVisual: {fileID: 0}

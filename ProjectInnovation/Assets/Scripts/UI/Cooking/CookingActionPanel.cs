@@ -43,20 +43,20 @@ public class CookingActionPanel : MonoBehaviour
     void CookingStarted()
     {
         Debug.Log("Cooking started");
-        cookingAnimator.SetBool(cookingType.ToString(),true);
+        //cookingAnimator.SetBool(cookingType.ToString(),true);
     }
 
     public void CookingFinished(InventoryItem item, CookingProcess process)
     {
         Debug.Log("Cooking finished");
-        cookingAnimator.SetBool(cookingType.ToString(),false);
+        //cookingAnimator.SetBool(cookingType.ToString(),false);
         gameObject.SetActive(false);
     }
 
     public void CookingInterrupted()
     {
         Debug.Log("Cooking interrupted");
-        cookingAnimator.SetBool(cookingType.ToString(),false);
+        //cookingAnimator.SetBool(cookingType.ToString(),false);
         gameObject.SetActive(false);
     }
 }
