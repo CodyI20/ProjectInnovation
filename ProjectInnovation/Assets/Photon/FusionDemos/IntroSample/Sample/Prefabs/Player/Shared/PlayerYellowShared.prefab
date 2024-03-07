@@ -82,7 +82,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 059b8a86007887843b719355eb9254e7,
+      objectReference: {fileID: 21300000, guid: 0b2ba90c0ef93e4448a143ea958c5db4,
         type: 3}
     - target: {fileID: 6867017121507484276, guid: 53a23774434104b4eace4d5a59efe7f8,
         type: 3}
@@ -103,6 +103,11 @@ PrefabInstance:
         type: 3}
       propertyPath: SortKey
       value: 4198742895
+      objectReference: {fileID: 0}
+    - target: {fileID: 8433023596025763233, guid: 53a23774434104b4eace4d5a59efe7f8,
+        type: 3}
+      propertyPath: NestedObjects.Array.size
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8433023596025763233, guid: 53a23774434104b4eace4d5a59efe7f8,
         type: 3}
@@ -129,6 +134,11 @@ PrefabInstance:
       propertyPath: NestedObjects.Array.data[6]
       value: 
       objectReference: {fileID: 3840429264001546621}
+    - target: {fileID: 8534736648183335247, guid: 53a23774434104b4eace4d5a59efe7f8,
+        type: 3}
+      propertyPath: SortKey
+      value: 885811252
+      objectReference: {fileID: 0}
     - target: {fileID: 8893051498228897185, guid: 53a23774434104b4eace4d5a59efe7f8,
         type: 3}
       propertyPath: SortKey

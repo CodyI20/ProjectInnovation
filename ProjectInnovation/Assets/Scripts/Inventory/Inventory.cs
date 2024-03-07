@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using CookingEnums;
 using Fusion;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Inventory : NetworkBehaviour
 {
@@ -19,7 +18,7 @@ public class Inventory : NetworkBehaviour
 
     private void Awake()
     {
-        if(cookingManager == null)
+        if (cookingManager == null)
         {
             Debug.LogError("Cooking Manager is not assigned to the Inventory script. Please assign it in the inspector.");
         }
@@ -34,27 +33,15 @@ public class Inventory : NetworkBehaviour
         ingredients = new Dictionary<RawIngredients, int>();
         preparedIngredients = new Dictionary<PreparedIngredients, int>();
         wheelSystem.GetInventory(this);
+        CookingManager.OnCookingFinishedd += RemoveIngredient;
     }
 
-    private void Update()
+    public override void Despawned(NetworkRunner runner, bool hasState)
     {
-        if (Input.GetKeyDown(KeyCode.P))
-            Print();
-        if (Input.GetKeyDown(KeyCode.C))
-            Clear();
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            AddIngredient(RawIngredients.Onion);
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            AddIngredient(RawIngredients.Fish);
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-            AddIngredient(RawIngredients.Egg);
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-            AddPreparedIngredient(PreparedIngredients.Chopped_Onion);
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-            AddPreparedIngredient(PreparedIngredients.Fried_Fish);
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-            AddPreparedIngredient(PreparedIngredients.Boiled_Egg);
+        base.Despawned(runner, hasState);
+        CookingManager.OnCookingFinishedd += RemoveIngredient;
     }
+
 
     /**
      * Trading Functions
@@ -62,25 +49,28 @@ public class Inventory : NetworkBehaviour
 
     public void TradeIngredients(Dictionary<RawIngredients, int> traderItems)
     {
-        foreach (KeyValuePair<RawIngredients, int> item in tradeIngredients) {
+        foreach (KeyValuePair<RawIngredients, int> item in tradeIngredients)
+        {
             RemoveTradeIngredient(item.Key, item.Value);
             RemoveIngredient(item.Key, item.Value);
         }
-        foreach (KeyValuePair<RawIngredients, int> item in traderItems) {
+        foreach (KeyValuePair<RawIngredients, int> item in traderItems)
+        {
             AddIngredient(item.Key, item.Value);
         }
     }
 
     public bool HasTradingIngredients()
     {
-        foreach (KeyValuePair<RawIngredients, int> item in tradeIngredients) {
+        foreach (KeyValuePair<RawIngredients, int> item in tradeIngredients)
+        {
             if (!HasIngredient(item.Key, item.Value))
                 return false;
         }
         return true;
     }
 
-     
+
 
     /**
      * Basic Inventory Management Functions
@@ -91,9 +81,13 @@ public class Inventory : NetworkBehaviour
     public void AddIngredient(RawIngredients ingredient)
     {
         if (ingredients.ContainsKey(ingredient))
+        {
+            Debug.Log("Increasing inventory ingredient: " + ingredient);
             ingredients[ingredient]++;
+        }
         else
         {
+            Debug.Log("Creating inventory ingredient: " + ingredient);
             ingredients[ingredient] = 1;
             Instantiate(inventoryItem.Find(x => x.Item == ingredient), gameObject.transform);
         }
@@ -210,7 +204,7 @@ public class Inventory : NetworkBehaviour
     {
         return tradeIngredients;
     }
-    
+
     public bool HasIngredient(RawIngredients ingredient)
     {
         return ingredients.ContainsKey(ingredient);

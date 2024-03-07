@@ -8,7 +8,7 @@ public class CookingManager : NetworkBehaviour
 {
     public event Action OnCookingStarted;
     public static event Action<InventoryItem, CookingProcess> OnCookingFinished;
-    public static event Action OnCookingFinishedd;
+    public static event Action<RawIngredients> OnCookingFinishedd;
     public event Action OnCookingInterrupted;
 
     private InventoryItem inventoryItem;
@@ -53,7 +53,7 @@ public class CookingManager : NetworkBehaviour
         yield return new WaitForSeconds(cookingProcess.CookingTime);
         _cookingState = CookingState.Done;
         OnCookingFinished?.Invoke(inventoryItem, cookingProcess);
-        OnCookingFinishedd?.Invoke();
+        OnCookingFinishedd?.Invoke(inventoryItem.Item);
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)

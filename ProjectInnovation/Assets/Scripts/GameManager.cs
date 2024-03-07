@@ -85,6 +85,12 @@ public class GameManager : Singleton<GameManager>
     {
         base.Render();
         RPC_CheckTurnTime();
+
+        //TEST
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            OnPlayerWin?.Invoke(GetCurrentPlayer());
+        }
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]

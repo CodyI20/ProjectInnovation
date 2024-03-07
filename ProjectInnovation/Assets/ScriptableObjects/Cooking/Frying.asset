@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Frying
   m_EditorClassIdentifier: 
   CookingTime: 5
-  CookingType: 1
+  CookingType: 2
   CookingAnimation: {fileID: 7400000, guid: 2e22743f8f015e4499025513b4f24353, type: 2}
   CookingSound: {fileID: 0}

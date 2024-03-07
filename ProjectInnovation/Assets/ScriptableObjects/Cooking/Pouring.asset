@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad37b33fe8697274196865dd5b7358c9, type: 3}
   m_Name: Pouring
   m_EditorClassIdentifier: 
-  CookingTime: 0
-  CookingType: 5
-  CookingAnimation: {fileID: 0}
+  CookingTime: 4
+  CookingType: 6
+  CookingAnimation: {fileID: 7400000, guid: cdb41aacfe8f962499de9ebbff452174, type: 2}
   CookingSound: {fileID: 0}

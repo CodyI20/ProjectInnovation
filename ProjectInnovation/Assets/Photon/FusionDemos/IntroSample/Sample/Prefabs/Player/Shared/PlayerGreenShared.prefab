@@ -92,7 +92,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: dd4f45eebc97fa74fa9d791e77826b2b,
+      objectReference: {fileID: 21300000, guid: b48eb82da3961714bb6ce5d57bd76371,
         type: 3}
     - target: {fileID: 5910824999610555153, guid: 532d7ebb427b45744ac0d0e2ef705bdc,
         type: 3}
@@ -103,6 +103,11 @@ PrefabInstance:
         type: 3}
       propertyPath: SortKey
       value: 3837276712
+      objectReference: {fileID: 0}
+    - target: {fileID: 6928145066202645258, guid: 532d7ebb427b45744ac0d0e2ef705bdc,
+        type: 3}
+      propertyPath: SortKey
+      value: 2882548315
       objectReference: {fileID: 0}
     - target: {fileID: 7159827030371065828, guid: 532d7ebb427b45744ac0d0e2ef705bdc,
         type: 3}

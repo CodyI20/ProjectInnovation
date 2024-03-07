@@ -7,5 +7,5 @@ public class Recipe : ScriptableObject
 {
     [Tooltip("Make sure the asset name is the same as the Recipe Title in order to avoid confusion")] public FinalDishes recipeTitle;
     public RecipeRequirements[] recipeRequirements;
-    public Image dishVisual;
+    public Sprite dishVisual;
 }

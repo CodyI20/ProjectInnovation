@@ -46,7 +46,7 @@ public class WheelSystem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             LaunchWheel(inventory);
         if (spinning) {
             if (rotatePoint != null)
@@ -65,14 +65,20 @@ public class WheelSystem : MonoBehaviour
                 float partSize = 360 / totalPartSize;
                 Debug.Log("Rotation angle: " + rotationAngle + " part size: " + partSize + " rotation angle / part size: " + rotationAngle / partSize);
                 int part = (int)(rotationAngle / partSize);
+                bool success = false;
                 foreach (WheelItem item in caseItems) {
                     part -= item.size;
                     if (part <= 0) {
                         Debug.Log("Landed on: " + item.ingredient);
                         GiveItem(item.ingredient);
                         TurnOffWheel();
+                        success = true;
                         break;
                     }
+                }
+                if ( (!success)) 
+                {
+                    Debug.Log("Failed to select");
                 }
             }
         }
@@ -97,7 +103,9 @@ public class WheelSystem : MonoBehaviour
     void GiveItem(RawIngredients ingredient)
     {
         if (inventory != null)
+        {
             inventory.AddIngredient(ingredient);
+        }
     }
 
     void GiveItem(RawIngredients ingredient, int quantity)

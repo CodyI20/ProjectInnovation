@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Fusion;
 using TMPro;
 using CookingEnums;
@@ -9,6 +10,7 @@ public class RecipeUI : NetworkBehaviour
 {
     public static event Action OnItemCrossedOut;
     [SerializeField] private TMP_Text recipeTitleText;
+    [SerializeField] private Image recipeImage;
     [SerializeField] private GameObject recipePanel;
     [SerializeField] private RecipeManager recipeManager;
 
@@ -27,10 +29,16 @@ public class RecipeUI : NetworkBehaviour
         foreach (var item in recipeManager.items)
         {
             Debug.Log("Adding item: " + item);
-            Instantiate(new GameObject(), recipePanel.transform, false).AddComponent<TextMeshProUGUI>().SetText(item.rawIngredient.ToString());
+            GameObject textItem = Instantiate(new GameObject(), recipePanel.transform, false);
+            TextMeshProUGUI textPart = textItem.AddComponent<TextMeshProUGUI>();
+            textPart.text = item.cookingProcess.CookingType.ToString() + "ed " + item.rawIngredient.ToString();
+            textPart.fontSize = 20;
+            textPart.color = Color.black;
+            //Instantiate(new GameObject(), recipePanel.transform, false).AddComponent<TextMeshProUGUI>().SetText(item.cookingProcess.CookingType.ToString()+"ed "+ item.rawIngredient.ToString());
         }
         AddToTextsList();
         SetRecipeTitle();
+        SetRecipeImage();
     }
 
     //This functions will be used in aiding the crossing out logic by loading all the text items into a list
@@ -48,7 +56,7 @@ public class RecipeUI : NetworkBehaviour
         {
             foreach(var recipeItem in recipeManager.items)
             {
-                if(textItem.text == item.ToString() && item.ToString()== recipeItem.rawIngredient.ToString() && process == recipeItem.cookingProcess)
+                if(textItem.text.Contains(item.Item.ToString()) && item.Item.ToString() == recipeItem.rawIngredient.ToString() && process == recipeItem.cookingProcess)
                 {
                     textItem.fontStyle = FontStyles.Strikethrough;
                     OnItemCrossedOut?.Invoke();
@@ -60,6 +68,11 @@ public class RecipeUI : NetworkBehaviour
     private void SetRecipeTitle()
     {
         recipeTitleText.text = recipeManager.recipeTitle.ToString();
+    }
+
+    private void SetRecipeImage()
+    {
+        recipeImage.sprite = recipeManager.recipeVisual;
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)

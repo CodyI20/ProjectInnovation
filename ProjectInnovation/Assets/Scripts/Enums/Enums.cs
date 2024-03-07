@@ -16,26 +16,53 @@ namespace CookingEnums
 
     public enum CookingType
     {
-        Boiling,
-        Frying,
-        Baking,
-        Chopping,
-        Grating,
-        Pouring
+        None,
+        Boil,
+        Fry,
+        Bak,
+        Chopp,
+        Grate,
+        Pour
     }
     public enum RawIngredients
     {
-        Potato,
-        Carrot,
-        Onion,
-        Meat,
-        Fish,
-        Egg,
+        CottageCheese,
+        Milk,
+        Eggs,
+        Buttter,
+        SourCream,
         Flour,
+        BakingPowder,
+        Rice,
         Sugar,
         Salt,
         Pepper,
-        Vinegar
+        PowderedSugar,
+        VanillaExtract,
+        BayLeaf,
+        Vinegar,
+        Cherries,
+        Jam,
+        Onion,
+        Carrots,
+        Garlic,
+        Mushrooms,
+        Cabbage,
+        Potato,
+        Tomato,
+        Zucchini,
+        Spinach,
+        ShiitakeMushrooms,
+        BeanSprouts,
+        Beef,
+        Bacon,
+        RedWine,
+        BeefBroth,
+        TomatoPaste,
+        Oil,
+        GochujiangSauce,
+        SoySauce,
+        Beetroot
     }
 
     public enum PreparedIngredients
@@ -73,9 +100,11 @@ namespace CookingEnums
     }
     public enum FinalDishes
     {
-        Noodles,
+        Syrnyky,
+        Varenyky,
+        Papanasi,
+        BeefBourguignon,
         Borscht,
-        Pancakes,
-        Sour_Cream
+        Bibimbap
     }
 }

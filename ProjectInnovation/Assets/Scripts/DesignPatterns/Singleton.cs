@@ -18,7 +18,7 @@ public class Singleton<T> : NetworkBehaviour where T : NetworkBehaviour
                 {
                     GameObject singletonObject = new GameObject(typeof(T).Name);
                     instance = singletonObject.AddComponent<T>();
-                    DontDestroyOnLoad(singletonObject);
+                    //DontDestroyOnLoad(singletonObject);
                 }
             }
 
@@ -33,7 +33,7 @@ public class Singleton<T> : NetworkBehaviour where T : NetworkBehaviour
         if (instance == null)
         {
             instance = this as T;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {

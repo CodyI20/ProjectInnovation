@@ -12,10 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e28e4622f40981f42ade2f8d5136c341, type: 3}
   m_Name: Borscht
   m_EditorClassIdentifier: 
-  recipeTitle: 1
+  recipeTitle: 4
   recipeRequirements:
-  - rawIngredient: 5
+  - rawIngredient: 21
+    cookingProcess: {fileID: 11400000, guid: eaccbce26fee3aa438dc9ab30bb49106, type: 2}
+  - rawIngredient: 22
     cookingProcess: {fileID: 11400000, guid: 9c2e151c4b43cb44c86da41d387a3461, type: 2}
-  - rawIngredient: 2
-    cookingProcess: {fileID: 11400000, guid: ebea65a442bbfa1469a77e6548a903fe, type: 2}
-  dishVisual: {fileID: 0}
+  - rawIngredient: 18
+    cookingProcess: {fileID: 11400000, guid: 9c2e151c4b43cb44c86da41d387a3461, type: 2}
+  - rawIngredient: 17
+    cookingProcess: {fileID: 11400000, guid: eaccbce26fee3aa438dc9ab30bb49106, type: 2}
+  - rawIngredient: 23
+    cookingProcess: {fileID: 11400000, guid: eaccbce26fee3aa438dc9ab30bb49106, type: 2}
+  - rawIngredient: 19
+    cookingProcess: {fileID: 11400000, guid: eaccbce26fee3aa438dc9ab30bb49106, type: 2}
+  - rawIngredient: 28
+    cookingProcess: {fileID: 11400000, guid: 9c2e151c4b43cb44c86da41d387a3461, type: 2}
+  - rawIngredient: 32
+    cookingProcess: {fileID: 11400000, guid: 9c2e151c4b43cb44c86da41d387a3461, type: 2}
+  - rawIngredient: 13
+    cookingProcess: {fileID: 11400000, guid: 9c2e151c4b43cb44c86da41d387a3461, type: 2}
+  dishVisual: {fileID: 21300000, guid: 334110f3d6c24bd48bdf155f59a77ae9, type: 3}

@@ -64,7 +64,7 @@ namespace FusionUtils {
 
     private void RenderAvatar() {
       if (_currentAvatarModel) {
-        _prevAvatarRotation = _currentAvatarModel.transform.rotation;
+        //_prevAvatarRotation = _currentAvatarModel.transform.rotation;
         Destroy(_currentAvatarModel);
       }
 
@@ -75,8 +75,9 @@ namespace FusionUtils {
 
       var model = NetworkProjectConfig.Config.PrefabTable.Load(NetworkProjectConfig.Config.PrefabTable.GetId((NetworkObjectGuid)prefabRef), true);
       _currentAvatarModel = Instantiate(model.gameObject, _avatarHolder);
-      _currentAvatarModel.AddComponent<RotateAvatar>();
-      _currentAvatarModel.transform.rotation = _prevAvatarRotation;
+            _currentAvatarModel.transform.position += new Vector3(-20f, 0, 0);
+      //_currentAvatarModel.AddComponent<RotateAvatar>();
+      //_currentAvatarModel.transform.rotation = _prevAvatarRotation;
     }
   }
 }
