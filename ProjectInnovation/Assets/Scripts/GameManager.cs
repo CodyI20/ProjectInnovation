@@ -93,7 +93,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_EndPlayerTurn()
     {
         OnPlayerTurnEnd?.Invoke(playersInMatch[currentPlayerIndex]);

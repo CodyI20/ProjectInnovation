@@ -4873,7 +4873,7 @@ PrefabInstance:
     - target: {fileID: 1621017460004523141, guid: 26002838dc48bdd4997ac35b31f88359,
         type: 3}
       propertyPath: timeForTurn
-      value: 25
+      value: 3600
       objectReference: {fileID: 0}
     - target: {fileID: 1621017460004523141, guid: 26002838dc48bdd4997ac35b31f88359,
         type: 3}
