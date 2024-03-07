@@ -1203,7 +1203,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5001024103311967160}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
@@ -1501,7 +1501,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4217297580837709761}
         m_TargetAssemblyTypeName: PlayerSkipTurn, Assembly-CSharp
-        m_MethodName: RPC_SkipTurn
+        m_MethodName: SkipTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
