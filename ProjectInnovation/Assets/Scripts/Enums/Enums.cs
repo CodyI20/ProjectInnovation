@@ -18,7 +18,7 @@ namespace CookingEnums
     {
         None,
         Boil,
-        Fry,
+        Fri,
         Bak,
         Chopp,
         Grate,

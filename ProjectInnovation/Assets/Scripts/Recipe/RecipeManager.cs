@@ -6,7 +6,7 @@ using Fusion;
 using System;
 using CookingEnums;
 
-public class RecipeManager : NetworkBehaviour
+public class RecipeManager : MonoBehaviour
 {
     public HashSet<RecipeRequirements> items { get; private set; } = new HashSet<RecipeRequirements>();
     public FinalDishes recipeTitle { get; private set; }

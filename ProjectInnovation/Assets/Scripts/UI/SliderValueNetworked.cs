@@ -21,8 +21,7 @@ public class SliderValueNetworked : NetworkBehaviour
         _slider = GetComponent<Slider>();
     }
 
-    [Rpc(RpcSources.All, RpcTargets.All)]
-    public void RPC_UpdateSliderValue()
+    public void UpdateSliderValue()
     {
         _sliderValue = _slider.value;
         _slider.value = _sliderValue;
@@ -31,7 +30,7 @@ public class SliderValueNetworked : NetworkBehaviour
     public override void Render()
     {
         base.Render();
-        RPC_UpdateSliderValue();
+        UpdateSliderValue();
         foreach(var change in _changeDetector.DetectChanges(this))
         {
             if (change == nameof(_sliderValue))

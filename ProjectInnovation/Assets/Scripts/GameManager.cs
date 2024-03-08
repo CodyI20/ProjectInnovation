@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static Fusion.NetworkBehaviour;
 
 
 /// <summary>
@@ -45,21 +46,20 @@ public class GameManager : Singleton<GameManager>
         else
         {
             currentPlayerIndex = 0;
-            RPC_StartPlayerTurn();
+            StartPlayerTurn();
             Debug.Log("Match started!");
             OnMatchStart?.Invoke();
             canCheckTime = true;
         }
     }
 
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RPC_StartPlayerTurn()
+    public void StartPlayerTurn()
     {
         CurrentTurnTime = timeForTurn;
         OnPlayerTurnStart?.Invoke(playersInMatch[currentPlayerIndex]);
     }
 
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    [Rpc(RpcSources.All, RpcTargets.All)]
     void RPC_CheckTurnTime()
     {
         if(!canCheckTime) return;
@@ -69,7 +69,7 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            RPC_EndPlayerTurn();
+            EndPlayerTurn();
         }
     }
 
@@ -93,8 +93,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    [Rpc(RpcSources.All, RpcTargets.All)]
-    public void RPC_EndPlayerTurn()
+    public void EndPlayerTurn()
     {
         OnPlayerTurnEnd?.Invoke(playersInMatch[currentPlayerIndex]);
         currentPlayerIndex++;
@@ -102,7 +101,7 @@ public class GameManager : Singleton<GameManager>
         {
             currentPlayerIndex = 0;
         }
-        RPC_StartPlayerTurn();
+        StartPlayerTurn();
     }
 
     public void EndMatch()

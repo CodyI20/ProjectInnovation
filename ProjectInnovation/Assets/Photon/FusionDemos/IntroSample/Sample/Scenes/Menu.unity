@@ -2220,6 +2220,7 @@ MonoBehaviour:
   - {fileID: 5419565569212473041, guid: e93985d977b8c5a44ba07aa28ead9408, type: 3}
   - {fileID: 6233546145337445224, guid: 6324f33f6440a464486c463460f00f86, type: 3}
   - {fileID: 2214812209513946378, guid: 7ebf9b3314a90ad489ef6a3393d3e2c4, type: 3}
+  - {fileID: 4874816254926733773, guid: b6d59d86320a86549af845f7f4bad11b, type: 3}
   _achievementHolder: {fileID: 4194379}
   _achievementName: {fileID: 318326372}
 --- !u!1001 &1812608415

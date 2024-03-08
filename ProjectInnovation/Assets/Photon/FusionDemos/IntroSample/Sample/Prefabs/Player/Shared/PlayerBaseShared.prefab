@@ -394,7 +394,6 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 6535295696188574946}
   - {fileID: 8997831377782981898}
   - {fileID: 531856636063771119}
 --- !u!114 &8997831377782981898
@@ -1203,7 +1202,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5001024103311967160}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
@@ -2827,6 +2826,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 877497181313073831, guid: 6ba0ce8045f117d4f808ea8a97179f62,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 679.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 877497181313073831, guid: 6ba0ce8045f117d4f808ea8a97179f62,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -340
+      objectReference: {fileID: 0}
     - target: {fileID: 1306796527812862447, guid: 6ba0ce8045f117d4f808ea8a97179f62,
         type: 3}
       propertyPath: suspense
@@ -3377,6 +3386,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -340
+      objectReference: {fileID: 0}
+    - target: {fileID: 3244082212302450291, guid: 6ba0ce8045f117d4f808ea8a97179f62,
+        type: 3}
+      propertyPath: m_Spacing.y
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3325690386241817706, guid: 6ba0ce8045f117d4f808ea8a97179f62,
         type: 3}
@@ -4034,22 +4048,22 @@ PrefabInstance:
     - target: {fileID: 8055430363685491672, guid: 6ba0ce8045f117d4f808ea8a97179f62,
         type: 3}
       propertyPath: m_Color.a
-      value: 0.78431374
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8055430363685491672, guid: 6ba0ce8045f117d4f808ea8a97179f62,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.031446517
+      value: 0.3584906
       objectReference: {fileID: 0}
     - target: {fileID: 8055430363685491672, guid: 6ba0ce8045f117d4f808ea8a97179f62,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.031446517
+      value: 0.3584906
       objectReference: {fileID: 0}
     - target: {fileID: 8055430363685491672, guid: 6ba0ce8045f117d4f808ea8a97179f62,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.031446517
+      value: 0.3584906
       objectReference: {fileID: 0}
     - target: {fileID: 8245887179402908837, guid: 6ba0ce8045f117d4f808ea8a97179f62,
         type: 3}

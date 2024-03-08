@@ -17,8 +17,10 @@ public class PercentageIncrease : NetworkBehaviour
     }
 
     [Rpc(RpcSources.All, RpcTargets.All)]
-    public void RPC_UpdatePercentage()
+    public void RPC_UpdatePercentage(PlayerRef player)
     {
+        if(player != Runner.LocalPlayer)
+            return;
         float percentageIncrease = 1.0f/_recipeManager.items.Count;
         if (_slider.value + percentageIncrease > 0.99 && _slider.value + percentageIncrease < 1)
         {

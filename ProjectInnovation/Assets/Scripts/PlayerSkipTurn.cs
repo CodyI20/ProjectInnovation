@@ -5,6 +5,6 @@ public class PlayerSkipTurn : NetworkBehaviour
 {
     public void SkipTurn()
     {
-        GameManager.Instance.RPC_EndPlayerTurn();
+        GameManager.Instance.EndPlayerTurn();
     }
 }

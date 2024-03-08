@@ -8,7 +8,7 @@ using System;
 
 public class RecipeUI : NetworkBehaviour
 {
-    public static event Action OnItemCrossedOut;
+    public static event Action<PlayerRef> OnItemCrossedOut;
     [SerializeField] private TMP_Text recipeTitleText;
     [SerializeField] private Image recipeImage;
     [SerializeField] private GameObject recipePanel;
@@ -59,7 +59,7 @@ public class RecipeUI : NetworkBehaviour
                 if(textItem.text.Contains(item.Item.ToString()) && item.Item.ToString() == recipeItem.rawIngredient.ToString() && process == recipeItem.cookingProcess)
                 {
                     textItem.fontStyle = FontStyles.Strikethrough;
-                    OnItemCrossedOut?.Invoke();
+                    OnItemCrossedOut?.Invoke(Runner.LocalPlayer);
                 }
             }
         }

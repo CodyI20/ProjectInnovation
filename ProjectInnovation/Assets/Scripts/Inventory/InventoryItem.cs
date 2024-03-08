@@ -49,11 +49,14 @@ public class InventoryItem : MonoBehaviour
     private void RemoveIngredient(InventoryItem item, CookingProcess process)
     {
         //OnIngredientDeleted?.Invoke(this.item);
-        this.amount -= 1;
-        amountText.text = this.amount.ToString();
-        if(this.amount <= 0)
+        if(Item == item.Item)
         {
-            Destroy(gameObject);
+            this.amount -= 1;
+            amountText.text = this.amount.ToString();
+            if(this.amount <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

@@ -104,6 +104,7 @@ public class Inventory : NetworkBehaviour
 
     public void RemoveIngredient(RawIngredients ingredient)
     {
+        Debug.Log("Removing ingredient: " + ingredient);
         if (ingredients.ContainsKey(ingredient))
             ingredients[ingredient]--;
         if (ingredients[ingredient] <= 0)
