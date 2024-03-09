@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using CookingEnums;
 using Fusion;
 using System.Threading;
@@ -31,10 +32,11 @@ public class WheelSystem : MonoBehaviour
         GameManager.Instance.OnPlayerTurnEnd += TurnOffWheel;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         GameManager.Instance.OnPlayerTurnEnd -= TurnOffWheel;
     }
+
 
     public void GetInventory(Inventory inventory)
     {
@@ -43,27 +45,10 @@ public class WheelSystem : MonoBehaviour
 
     private void Update()
     {
-        if (!spinning && (Input.GetKeyDown(KeyCode.Space) || (Input.touchCount > 0 && IsTouchOnWheel())))
+        if (!spinning && (Input.GetKeyDown(KeyCode.Space) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)))
         {
             StartSpinningAsync();
         }
-    }
-
-    private bool IsTouchOnWheel()
-    {
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            Ray ray = Camera.main.ScreenPointToRay(touch.position);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                return hit.collider.gameObject == gameObject;
-            }
-        }
-
-        return false;
     }
 
     private async void StartSpinningAsync()
@@ -162,6 +147,8 @@ public class WheelSystem : MonoBehaviour
 
     private void TurnOffWheel(PlayerRef player)
     {
+        Debug.Log("Turning off wheel");
+        StopSpinningAsync();
         gameObject.SetActive(false);
     }
 

@@ -1,4 +1,5 @@
 using Fusion;
+using UnityEngine;
 
 public class EnableIfPlayerTurn : NetworkBehaviour
 {
@@ -12,14 +13,8 @@ public class EnableIfPlayerTurn : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.All)]
     private void RPC_OnPlayerTurnStart(PlayerRef player)
     {
-        if (player == Runner.LocalPlayer)
-        {
-            gameObject.SetActive(true);
-        }
-        else
-        {
-            gameObject.SetActive(false);
-        }
+        gameObject.SetActive(player==Runner.LocalPlayer);
+        Debug.Log($"Enabling {gameObject.name}; Player {player} is local player: {player==Runner.LocalPlayer}");
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)

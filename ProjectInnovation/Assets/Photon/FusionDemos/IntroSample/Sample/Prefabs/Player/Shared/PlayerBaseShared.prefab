@@ -901,7 +901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 743493448
   ObjectInterest: 1
-  Flags: 524289
+  Flags: 262145
   NestedObjects:
   - {fileID: 8893051498228897185}
   - {fileID: 7958709912660035517}
@@ -2782,7 +2782,7 @@ PrefabInstance:
     - target: {fileID: -7259824697678030529, guid: 6ba0ce8045f117d4f808ea8a97179f62,
         type: 3}
       propertyPath: Flags
-      value: 131073
+      value: 262145
       objectReference: {fileID: 0}
     - target: {fileID: -7259824697678030529, guid: 6ba0ce8045f117d4f808ea8a97179f62,
         type: 3}
