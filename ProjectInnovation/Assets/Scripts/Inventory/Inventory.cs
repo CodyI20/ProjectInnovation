@@ -32,14 +32,15 @@ public class Inventory : NetworkBehaviour
     {
         ingredients = new Dictionary<RawIngredients, int>();
         preparedIngredients = new Dictionary<PreparedIngredients, int>();
-        wheelSystem.GetInventory(this);
+        if (wheelSystem != null)
+            wheelSystem.GetInventory(this);
         CookingManager.OnCookingFinishedd += RemoveIngredient;
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)
     {
         base.Despawned(runner, hasState);
-        CookingManager.OnCookingFinishedd += RemoveIngredient;
+        CookingManager.OnCookingFinishedd -= RemoveIngredient;
     }
 
 

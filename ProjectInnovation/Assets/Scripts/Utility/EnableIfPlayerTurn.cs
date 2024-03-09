@@ -6,7 +6,7 @@ public class EnableIfPlayerTurn : NetworkBehaviour
     {
         base.Spawned();
         GameManager.Instance.OnPlayerTurnStart += RPC_OnPlayerTurnStart;
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     [Rpc(RpcSources.All, RpcTargets.All)]

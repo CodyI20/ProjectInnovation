@@ -2781,6 +2781,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7259824697678030529, guid: 6ba0ce8045f117d4f808ea8a97179f62,
         type: 3}
+      propertyPath: Flags
+      value: 131073
+      objectReference: {fileID: 0}
+    - target: {fileID: -7259824697678030529, guid: 6ba0ce8045f117d4f808ea8a97179f62,
+        type: 3}
       propertyPath: SortKey
       value: 2702814801
       objectReference: {fileID: 0}

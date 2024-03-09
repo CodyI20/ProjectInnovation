@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using CookingEnums;
 using Fusion;
+using System.Threading;
+using System.Threading.Tasks;
 
 public class WheelSystem : MonoBehaviour
 {
@@ -13,24 +15,25 @@ public class WheelSystem : MonoBehaviour
         public int size;
     }
 
+    private bool spinning = false;
+    private Inventory inventory;
+
+    // Used to rotate around a point if null; it will rotate around itself
+    public Transform rotatePoint;
+    public float suspense = 5.0f; // Time in seconds for which the wheel spins
+    public List<WheelItem> caseItems = new List<WheelItem>();
+    private float initialForce;
+    private CancellationTokenSource spinCancellationTokenSource;
+
     private void OnEnable()
     {
         Debug.Log("WheelSystem enabled");
         GameManager.Instance.OnPlayerTurnEnd += TurnOffWheel;
     }
 
-
-    // Used to rotate around a point if null, it will rotate around itself
-    public Transform rotatePoint;
-    public float suspense = 1.0f;
-    public List<WheelItem> caseItems = new List<WheelItem>();
-    private float randomForce;
-    private bool spinning = false;
-    private Inventory inventory;
-
-    void Start()
+    private void OnDisable()
     {
-        
+        GameManager.Instance.OnPlayerTurnEnd -= TurnOffWheel;
     }
 
     public void GetInventory(Inventory inventory)
@@ -38,63 +41,131 @@ public class WheelSystem : MonoBehaviour
         this.inventory = inventory;
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-            LaunchWheel(inventory);
-        if (spinning) {
-            if (rotatePoint != null)
-                transform.RotateAround(rotatePoint.position, Vector3.forward, randomForce * Time.deltaTime);
-            else
-                transform.Rotate(Vector3.forward, randomForce * Time.deltaTime);
-            randomForce = Mathf.Lerp(randomForce, 0, 0.1f/suspense);
-            if (randomForce < 1.0f) {
-                spinning = false;
-                randomForce = 0;
-                float rotationAngle = transform.eulerAngles.z;
-                float totalPartSize = 0;
-                foreach (WheelItem item in caseItems) {
-                    totalPartSize += item.size;
-                }
-                float partSize = 360 / totalPartSize;
-                Debug.Log("Rotation angle: " + rotationAngle + " part size: " + partSize + " rotation angle / part size: " + rotationAngle / partSize);
-                int part = (int)(rotationAngle / partSize);
-                bool success = false;
-                foreach (WheelItem item in caseItems) {
-                    part -= item.size;
-                    if (part <= 0) {
-                        Debug.Log("Landed on: " + item.ingredient);
-                        GiveItem(item.ingredient);
-                        TurnOffWheel(GameManager.Instance.Runner.LocalPlayer);
-                        success = true;
-                        break;
-                    }
-                }
-                if ( (!success)) 
-                {
-                    Debug.Log("Failed to select");
-                }
+        if (!spinning && (Input.GetKeyDown(KeyCode.Space) || (Input.touchCount > 0 && IsTouchOnWheel())))
+        {
+            StartSpinningAsync();
+        }
+    }
+
+    private bool IsTouchOnWheel()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            Ray ray = Camera.main.ScreenPointToRay(touch.position);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                return hit.collider.gameObject == gameObject;
+            }
+        }
+
+        return false;
+    }
+
+    private async void StartSpinningAsync()
+    {
+        if (!spinning)
+        {
+            spinning = true;
+            spinCancellationTokenSource = new CancellationTokenSource();
+
+            try
+            {
+                await SpinWheelAsync(spinCancellationTokenSource.Token);
+            }
+            catch (TaskCanceledException)
+            {
+                // Task was canceled (game object disabled), ignore or handle as needed
             }
         }
     }
 
-    void LaunchWheel(Inventory inventory) 
+    private void StopSpinningAsync()
     {
-        if (spinning)
-            return;
-        if (inventory != null)
-            this.inventory = inventory;
-        randomForce = Random.Range(1500, 3000);
-        spinning = true;
+        if (spinCancellationTokenSource != null)
+        {
+            spinCancellationTokenSource.Cancel();
+            spinning = false;
+        }
+    }
+
+    private async Task SpinWheelAsync(CancellationToken cancellationToken)
+    {
+        initialForce = Random.Range(1500, 3000);
+        float startTime = Time.time;
+        float endTime = startTime + suspense;
+
+        while (Time.time < endTime)
+        {
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return;
+            }
+
+            float elapsed = Time.time - startTime;
+            float t = elapsed / suspense;
+            float easedT = EaseOutQuad(t);
+
+            float rotationSpeed = Mathf.Lerp(initialForce, 0f, easedT);
+
+            if (rotatePoint != null)
+                transform.RotateAround(rotatePoint.position, Vector3.forward, rotationSpeed * Time.deltaTime);
+            else
+                transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+
+            await Task.Yield();
+        }
+
+        FinishSpinning();
+    }
+
+    private void FinishSpinning()
+    {
+        spinning = false;
+
+        float rotationAngle = transform.eulerAngles.z;
+        float totalPartSize = 0;
+
+        foreach (WheelItem item in caseItems)
+        {
+            totalPartSize += item.size;
+        }
+
+        float partSize = 360 / totalPartSize;
+        Debug.Log("Rotation angle: " + rotationAngle + " part size: " + partSize + " rotation angle / part size: " + rotationAngle / partSize);
+
+        int part = (int)(rotationAngle / partSize);
+        bool success = false;
+
+        foreach (WheelItem item in caseItems)
+        {
+            part -= item.size;
+            if (part <= 0)
+            {
+                Debug.Log("Landed on: " + item.ingredient);
+                GiveItem(item.ingredient);
+                TurnOffWheel(GameManager.Instance.Runner.LocalPlayer);
+                success = true;
+                break;
+            }
+        }
+
+        if (!success)
+        {
+            Debug.Log("Failed to select");
+        }
     }
 
     private void TurnOffWheel(PlayerRef player)
     {
-        spinning = false;
         gameObject.SetActive(false);
     }
 
-    void GiveItem(RawIngredients ingredient)
+    private void GiveItem(RawIngredients ingredient)
     {
         if (inventory != null)
         {
@@ -102,14 +173,14 @@ public class WheelSystem : MonoBehaviour
         }
     }
 
-    void GiveItem(RawIngredients ingredient, int quantity)
+    private void GiveItem(RawIngredients ingredient, int quantity)
     {
         if (inventory != null)
             inventory.AddIngredient(ingredient, quantity);
     }
 
-    private void OnDestroy()
+    private float EaseOutQuad(float t)
     {
-        GameManager.Instance.OnPlayerTurnEnd -= TurnOffWheel;
+        return 1 - (1 - t) * (1 - t);
     }
 }
