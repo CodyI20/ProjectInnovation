@@ -395,7 +395,6 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 8997831377782981898}
-  - {fileID: 531856636063771119}
 --- !u!114 &8997831377782981898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +411,8 @@ MonoBehaviour:
   recipeImage: {fileID: 965719559860883239}
   recipePanel: {fileID: 5999845749825135977}
   recipeManager: {fileID: 6535295696188574946}
+  textItemPrefab: {fileID: 882568498972149146, guid: 57848cc8c803230499e4de2c65df8eb1,
+    type: 3}
 --- !u!114 &531856636063771119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,9 +575,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7337141693272521212}
-  - component: {fileID: 6805616268899456105}
   - component: {fileID: 5986367715610829149}
-  - component: {fileID: 3788248960082996237}
   - component: {fileID: 2004207743767708776}
   m_Layer: 5
   m_Name: YourTurn
@@ -607,18 +606,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6805616268899456105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3348740221016442011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08fbec494d18e0149a17f234f851885d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5986367715610829149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,20 +626,7 @@ MonoBehaviour:
   - {fileID: 6867017121507484276}
   - {fileID: 2818679211911412497}
   NetworkedBehaviours:
-  - {fileID: 6805616268899456105}
-  - {fileID: 3788248960082996237}
---- !u!114 &3788248960082996237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3348740221016442011}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f28001b9f59615a4596847ecbb233a0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  - {fileID: 2004207743767708776}
 --- !u!114 &2004207743767708776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1500,7 +1474,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4217297580837709761}
         m_TargetAssemblyTypeName: PlayerSkipTurn, Assembly-CSharp
-        m_MethodName: SkipTurn
+        m_MethodName: RPC_SkipTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1660,7 +1634,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6972450400279647597}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f28001b9f59615a4596847ecbb233a0e, type: 3}
   m_Name: 
@@ -1942,7 +1916,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8776166676439194979}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08fbec494d18e0149a17f234f851885d, type: 3}
   m_Name: 
@@ -2723,6 +2697,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 4462770285231656341}
   - {fileID: 8254674072288025291}
+  - {fileID: 1227064733005280132}
 --- !u!114 &4462770285231656341
 MonoBehaviour:
   m_ObjectHideFlags: 0

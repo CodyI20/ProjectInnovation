@@ -7,7 +7,7 @@ public class TurnTimerUI : NetworkBehaviour
     [Networked] private bool isTimerActive { get; set; } = false;
     private float currentTurnTime;
 
-    public GameObject TurnTimer { get; private set; }
+    public GameObject TurnTimer { get; set; }
     private TMP_Text timerText { get; set; }
 
 

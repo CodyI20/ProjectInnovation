@@ -15,6 +15,7 @@ public class RecipeUI : NetworkBehaviour
     [SerializeField] private RecipeManager recipeManager;
 
     private List<TextMeshProUGUI> _texts = new List<TextMeshProUGUI>();
+    [SerializeField] private GameObject textItemPrefab;
 
     public override void Spawned()
     {
@@ -29,12 +30,17 @@ public class RecipeUI : NetworkBehaviour
         foreach (var item in recipeManager.items)
         {
             Debug.Log("Adding item: " + item);
-            GameObject textItem = Instantiate(new GameObject(), recipePanel.transform, false);
-            TextMeshProUGUI textPart = textItem.AddComponent<TextMeshProUGUI>();
+
+            // Instantiate the prefab instead of a new empty GameObject.
+            GameObject textItem = Instantiate(textItemPrefab, recipePanel.transform, false);
+
+            // Access the TextMeshProUGUI component from the instantiated prefab.
+            TextMeshProUGUI textPart = textItem.GetComponent<TextMeshProUGUI>();
+
+            // Customize the textPart properties if needed.
             textPart.text = item.cookingProcess.CookingType.ToString() + "ed " + item.rawIngredient.ToString();
             textPart.fontSize = 20;
             textPart.color = Color.black;
-            //Instantiate(new GameObject(), recipePanel.transform, false).AddComponent<TextMeshProUGUI>().SetText(item.cookingProcess.CookingType.ToString()+"ed "+ item.rawIngredient.ToString());
         }
         AddToTextsList();
         SetRecipeTitle();

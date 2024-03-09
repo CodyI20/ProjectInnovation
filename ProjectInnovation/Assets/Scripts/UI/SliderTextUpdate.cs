@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class SliderTextUpdate : NetworkBehaviour
 {
     [Tooltip("Make sure that the slider value is from 0 to 1! Very important!!!")] [SerializeField] private Slider _slider;
-    [Networked] private string _text { get; set;}
     private TextMeshProUGUI _percentageText;
 
     private void Awake()

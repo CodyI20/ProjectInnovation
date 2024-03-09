@@ -3,8 +3,9 @@ using Fusion;
 
 public class PlayerSkipTurn : NetworkBehaviour
 {
-    public void SkipTurn()
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_SkipTurn()
     {
-        GameManager.Instance.EndPlayerTurn();
+        GameManager.Instance.RPC_EndPlayerTurn();
     }
 }

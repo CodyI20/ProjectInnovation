@@ -1,24 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fusion;
 
-public class EnableOnGameStart : MonoBehaviour
+public class EnableOnGameStart : NetworkBehaviour
 {
-    private void Start()
-    {
-        gameObject.SetActive(false);
-    }
-    private void OnEnable()
+    public override void Spawned()
     {
         GameManager.OnMatchStart += Enable;
+        gameObject.SetActive(false);
     }
-    private void OnDestroy()
-    {
-        GameManager.OnMatchStart -= Enable;
-    }
-    
+  
     void Enable()
     {
         gameObject.SetActive(true);
+        GameManager.OnMatchStart -= Enable;
     }
 }

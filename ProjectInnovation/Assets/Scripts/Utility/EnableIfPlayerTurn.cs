@@ -9,7 +9,7 @@ public class EnableIfPlayerTurn : NetworkBehaviour
         GameManager.Instance.OnPlayerTurnStart += RPC_OnPlayerTurnStart;
     }
 
-    [Rpc(RpcSources.All, RpcTargets.All)]
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     private void RPC_OnPlayerTurnStart(PlayerRef player)
     {
         if (player == Runner.LocalPlayer)

@@ -8,7 +8,7 @@ public class TurnOffIfNotLocalPlayer : NetworkBehaviour
         RPC_TurnOnOff(Runner.LocalPlayer);
     }
     //This method is called when the object is spawned and makes it so that only the local player can see the object
-    [Rpc(RpcSources.All, RpcTargets.All)]
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     private void RPC_TurnOnOff(PlayerRef player)
     {
         if (player == Runner.LocalPlayer)

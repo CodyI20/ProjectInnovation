@@ -8,35 +8,46 @@ public class PercentageIncrease : NetworkBehaviour
     [SerializeField] private CookingManager _cookingManager;
     [SerializeField] private RecipeManager _recipeManager;
     private Slider _slider;
+    [Networked, OnChangedRender(nameof(ChangeActualSlider))] private float _sliderValue { get; set; }
 
     public override void Spawned()
     {
         base.Spawned();
         _slider = GetComponent<Slider>();
-        RecipeUI.OnItemCrossedOut += RPC_UpdatePercentage;
+        RecipeUI.OnItemCrossedOut += UpdatePercentage;
     }
 
-    [Rpc(RpcSources.All, RpcTargets.All)]
-    public void RPC_UpdatePercentage(PlayerRef player)
+    private void Update()
     {
-        if(player != Runner.LocalPlayer)
-            return;
-        float percentageIncrease = 1.0f/_recipeManager.items.Count;
-        if (_slider.value + percentageIncrease > 0.99 && _slider.value + percentageIncrease < 1)
+        if(HasStateAuthority && Input.GetKeyDown(KeyCode.P))
         {
-            _slider.value = 1;
+            UpdatePercentage(Runner.LocalPlayer);
+        }
+    }
+
+    public void UpdatePercentage(PlayerRef player)
+    {
+        float percentageIncrease = 1.0f/_recipeManager.items.Count;
+        if (_sliderValue + percentageIncrease > 0.99 && _sliderValue + percentageIncrease < 1)
+        {
+            _sliderValue = 1;
             return;
         }
-        if (_slider.value + percentageIncrease <= 1)
-            _slider.value += percentageIncrease;
+        if (_sliderValue + percentageIncrease <= 1)
+            _sliderValue += percentageIncrease;
         else
-            _slider.value = 1;
+            _sliderValue = 1;
 
+    }
+
+    void ChangeActualSlider()
+    {
+        _slider.value = _sliderValue;
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)
     {
         base.Despawned(runner, hasState);
-        RecipeUI.OnItemCrossedOut -= RPC_UpdatePercentage;
+        RecipeUI.OnItemCrossedOut -= UpdatePercentage;
     }
 }

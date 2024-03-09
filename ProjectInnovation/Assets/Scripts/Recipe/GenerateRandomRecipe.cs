@@ -3,12 +3,12 @@ using Fusion;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(RecipeManager))]
-public class GenerateRandomRecipe : NetworkBehaviour
+public class GenerateRandomRecipe : MonoBehaviour
 {
     [SerializeField] private List<Recipe> recipes;
     private RecipeManager recipeManager;
 
-    public override void Spawned()
+    private void Start()
     {
         recipeManager = GetComponent<RecipeManager>();
         Recipe randomRecipe = recipes[Random.Range(0, recipes.Count)];

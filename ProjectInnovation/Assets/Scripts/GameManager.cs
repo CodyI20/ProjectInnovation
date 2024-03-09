@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static Fusion.NetworkBehaviour;
 
 
 /// <summary>
@@ -21,12 +20,12 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private float timeForTurn = 10f;
     public float TimeForTurn { get { return timeForTurn; } }
-    [HideInInspector][Networked] public float CurrentTurnTime { get; private set;}
+    [HideInInspector][Networked] public float CurrentTurnTime { get; set; }
 
 
     //Make a public get private set property for the playersInMatch list
     private List<PlayerRef> playersInMatch;
-    private int currentPlayerIndex = 0;
+    [Networked] private int currentPlayerIndex { get; set; } = 0;
     [Networked] private bool canCheckTime { get; set; } = false;
 
     public override void Spawned()
@@ -34,7 +33,7 @@ public class GameManager : Singleton<GameManager>
         base.Spawned();
 
     }
-    [Rpc(RpcSources.All, RpcTargets.All)]
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_StartMatch()
     {
         playersInMatch = new List<PlayerRef>(Runner.ActivePlayers.ToList());
@@ -46,34 +45,35 @@ public class GameManager : Singleton<GameManager>
         else
         {
             currentPlayerIndex = 0;
-            StartPlayerTurn();
+            RPC_StartPlayerTurn();
             Debug.Log("Match started!");
             OnMatchStart?.Invoke();
             canCheckTime = true;
         }
     }
 
-    public void StartPlayerTurn()
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_StartPlayerTurn()
     {
         CurrentTurnTime = timeForTurn;
         OnPlayerTurnStart?.Invoke(playersInMatch[currentPlayerIndex]);
     }
 
-    [Rpc(RpcSources.All, RpcTargets.All)]
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     void RPC_CheckTurnTime()
     {
-        if(!canCheckTime) return;
+        if (!canCheckTime) return;
         if (CurrentTurnTime > 0)
         {
-            CurrentTurnTime -= Time.deltaTime;
+            CurrentTurnTime -= Time.unscaledDeltaTime;
         }
         else
         {
-            EndPlayerTurn();
+            RPC_EndPlayerTurn();
         }
     }
 
-    [Rpc(RpcSources.All, RpcTargets.All)]
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_PlayerWin()
     {
         Debug.Log($"Player {playersInMatch[currentPlayerIndex]} won!");
@@ -93,7 +93,8 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public void EndPlayerTurn()
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_EndPlayerTurn()
     {
         OnPlayerTurnEnd?.Invoke(playersInMatch[currentPlayerIndex]);
         currentPlayerIndex++;
@@ -101,7 +102,7 @@ public class GameManager : Singleton<GameManager>
         {
             currentPlayerIndex = 0;
         }
-        StartPlayerTurn();
+        RPC_StartPlayerTurn();
     }
 
     public void EndMatch()
