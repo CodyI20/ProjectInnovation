@@ -575,8 +575,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7337141693272521212}
-  - component: {fileID: 5986367715610829149}
-  - component: {fileID: 2004207743767708776}
+  - component: {fileID: 1810335909298804937}
   m_Layer: 5
   m_Name: YourTurn
   m_TagString: Untagged
@@ -606,7 +605,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5986367715610829149
+--- !u!114 &1810335909298804937
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -615,28 +614,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3348740221016442011}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortKey: 562094374
-  ObjectInterest: 1
-  Flags: 262145
-  NestedObjects:
-  - {fileID: 5449405997131872091}
-  - {fileID: 6867017121507484276}
-  - {fileID: 2818679211911412497}
-  NetworkedBehaviours:
-  - {fileID: 2004207743767708776}
---- !u!114 &2004207743767708776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3348740221016442011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ec21f25993fbe64cbb5a9945e4bf58c, type: 3}
+  m_Script: {fileID: 11500000, guid: 08fbec494d18e0149a17f234f851885d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3744653385970977940
@@ -907,7 +885,6 @@ MonoBehaviour:
   - {fileID: 8893051498228897185}
   - {fileID: 7958709912660035517}
   - {fileID: 7528042662267152485}
-  - {fileID: 5986367715610829149}
   - {fileID: 5449405997131872091}
   - {fileID: 6867017121507484276}
   - {fileID: 2818679211911412497}
@@ -917,8 +894,10 @@ MonoBehaviour:
   - {fileID: -344493261251582540}
   - {fileID: -402902742968262172}
   - {fileID: 773894597437488074}
+  - {fileID: 3859330926488796966}
   - {fileID: 719831708844772594}
   - {fileID: 7849042090831105228}
+  - {fileID: 1810335909298804937}
 --- !u!143 &8552849633272174382
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1951,6 +1930,7 @@ GameObject:
   - component: {fileID: 3307625045225300886}
   - component: {fileID: 4222544882930850104}
   - component: {fileID: 7355944449825179015}
+  - component: {fileID: 3859330926488796966}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
@@ -2042,6 +2022,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3859330926488796966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8799440194393233153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ec21f25993fbe64cbb5a9945e4bf58c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9000105731836924312
 GameObject:
   m_ObjectHideFlags: 0

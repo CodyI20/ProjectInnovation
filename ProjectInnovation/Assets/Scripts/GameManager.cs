@@ -21,6 +21,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private float timeForTurn = 10f;
     public float TimeForTurn { get { return timeForTurn; } }
     [HideInInspector][Networked] public float CurrentTurnTime { get; set; }
+    [Networked] private TickTimer networkedCurrentTurnTime { get; set; }
 
 
     //Make a public get private set property for the playersInMatch list
@@ -31,7 +32,7 @@ public class GameManager : Singleton<GameManager>
     public override void Spawned()
     {
         base.Spawned();
-
+        networkedCurrentTurnTime = TickTimer.None;
     }
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_StartMatch()
@@ -44,6 +45,8 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
+            if (Runner.IsRunning)
+                networkedCurrentTurnTime = TickTimer.CreateFromSeconds(Runner, timeForTurn);
             currentPlayerIndex = 0;
             RPC_StartPlayerTurn();
             Debug.Log("Match started!");
@@ -55,7 +58,6 @@ public class GameManager : Singleton<GameManager>
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_StartPlayerTurn()
     {
-        CurrentTurnTime = timeForTurn;
         OnPlayerTurnStart?.Invoke(playersInMatch[currentPlayerIndex]);
     }
 
@@ -63,11 +65,8 @@ public class GameManager : Singleton<GameManager>
     void RPC_CheckTurnTime()
     {
         if (!canCheckTime) return;
-        if (CurrentTurnTime > 0)
-        {
-            CurrentTurnTime -= Time.unscaledDeltaTime;
-        }
-        else
+        RPC_SetCurrentTimeFloat();
+        if (networkedCurrentTurnTime.Expired(Runner))
         {
             RPC_EndPlayerTurn();
         }
@@ -81,17 +80,17 @@ public class GameManager : Singleton<GameManager>
         OnPlayerWin?.Invoke(playersInMatch[currentPlayerIndex]);
     }
 
-    public override void Render()
-    {
-        base.Render();
-        RPC_CheckTurnTime();
+    //public override void Render()
+    //{
+    //    base.Render();
+    //    RPC_CheckTurnTime();
 
-        //TEST
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            OnPlayerWin?.Invoke(GetCurrentPlayer());
-        }
-    }
+    //    //TEST
+    //    if (Input.GetKeyDown(KeyCode.N))
+    //    {
+    //        OnPlayerWin?.Invoke(GetCurrentPlayer());
+    //    }
+    //}
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_EndPlayerTurn()
@@ -102,7 +101,22 @@ public class GameManager : Singleton<GameManager>
         {
             currentPlayerIndex = 0;
         }
+        networkedCurrentTurnTime = TickTimer.CreateFromSeconds(Runner, timeForTurn);
         RPC_StartPlayerTurn();
+    }
+
+    public override void FixedUpdateNetwork()
+    {
+        base.FixedUpdateNetwork();
+
+        RPC_CheckTurnTime();
+        Debug.Log($"The current networked Value is: {networkedCurrentTurnTime.RemainingTime(Runner).GetValueOrDefault()}");
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    private void RPC_SetCurrentTimeFloat()
+    {
+        CurrentTurnTime = networkedCurrentTurnTime.RemainingTime(Runner).GetValueOrDefault();
     }
 
     public void EndMatch()
