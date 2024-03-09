@@ -16,7 +16,7 @@ public class WheelSystem : MonoBehaviour
     private void OnEnable()
     {
         Debug.Log("WheelSystem enabled");
-        GameManager.Instance.OnPlayerTurnStart += EnableWheel;
+        GameManager.Instance.OnPlayerTurnEnd += TurnOffWheel;
     }
 
 
@@ -31,12 +31,6 @@ public class WheelSystem : MonoBehaviour
     void Start()
     {
         
-    }
-
-    void EnableWheel(PlayerRef player)
-    {
-        if(player == GameManager.Instance.Runner.LocalPlayer)
-            gameObject.SetActive(true);
     }
 
     public void GetInventory(Inventory inventory)
@@ -71,7 +65,7 @@ public class WheelSystem : MonoBehaviour
                     if (part <= 0) {
                         Debug.Log("Landed on: " + item.ingredient);
                         GiveItem(item.ingredient);
-                        TurnOffWheel();
+                        TurnOffWheel(GameManager.Instance.Runner.LocalPlayer);
                         success = true;
                         break;
                     }
@@ -94,7 +88,7 @@ public class WheelSystem : MonoBehaviour
         spinning = true;
     }
 
-    private void TurnOffWheel()
+    private void TurnOffWheel(PlayerRef player)
     {
         spinning = false;
         gameObject.SetActive(false);
@@ -116,6 +110,6 @@ public class WheelSystem : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.Instance.OnPlayerTurnStart -= EnableWheel;
+        GameManager.Instance.OnPlayerTurnEnd -= TurnOffWheel;
     }
 }

@@ -1,4 +1,3 @@
-using UnityEngine;
 using Fusion;
 
 public class EnableIfPlayerTurn : NetworkBehaviour
@@ -7,9 +6,10 @@ public class EnableIfPlayerTurn : NetworkBehaviour
     {
         base.Spawned();
         GameManager.Instance.OnPlayerTurnStart += RPC_OnPlayerTurnStart;
+        gameObject.SetActive(false);
     }
 
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    [Rpc(RpcSources.All, RpcTargets.All)]
     private void RPC_OnPlayerTurnStart(PlayerRef player)
     {
         if (player == Runner.LocalPlayer)

@@ -8,7 +8,7 @@ public class PercentageIncrease : NetworkBehaviour
     [SerializeField] private CookingManager _cookingManager;
     [SerializeField] private RecipeManager _recipeManager;
     private Slider _slider;
-    [Networked, OnChangedRender(nameof(ChangeActualSlider))] private float _sliderValue { get; set; }
+    [Networked, OnChangedRender(nameof(ChangeActualSlider))] private float _sliderValue { get; set; } = 0;
 
     public override void Spawned()
     {

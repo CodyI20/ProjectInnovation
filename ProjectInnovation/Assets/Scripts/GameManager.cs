@@ -110,7 +110,7 @@ public class GameManager : Singleton<GameManager>
         base.FixedUpdateNetwork();
 
         RPC_CheckTurnTime();
-        Debug.Log($"The current networked Value is: {networkedCurrentTurnTime.RemainingTime(Runner).GetValueOrDefault()}");
+        //Debug.Log($"The current networked Value is: {networkedCurrentTurnTime.RemainingTime(Runner).GetValueOrDefault()}");
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]

@@ -5,9 +5,7 @@ using Fusion;
 public class TurnTimerUI : NetworkBehaviour
 {
     [Networked] private bool isTimerActive { get; set; } = false;
-    private float currentTurnTime;
 
-    [Networked] public NetworkObject TurnTimer { get; set; }
     private TMP_Text timerText { get; set; }
 
 

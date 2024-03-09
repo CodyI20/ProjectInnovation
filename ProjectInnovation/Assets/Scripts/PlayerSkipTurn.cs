@@ -1,10 +1,8 @@
 using UnityEngine;
-using Fusion;
 
-public class PlayerSkipTurn : NetworkBehaviour
+public class PlayerSkipTurn : MonoBehaviour
 {
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RPC_SkipTurn()
+    public void SkipTurn()
     {
         GameManager.Instance.RPC_EndPlayerTurn();
     }
