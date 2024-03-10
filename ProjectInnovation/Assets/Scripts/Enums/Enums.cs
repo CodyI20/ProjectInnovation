@@ -62,7 +62,8 @@ namespace CookingEnums
         Oil,
         GochujiangSauce,
         SoySauce,
-        Beetroot
+        Beetroot,
+        None
     }
 
     public enum PreparedIngredients

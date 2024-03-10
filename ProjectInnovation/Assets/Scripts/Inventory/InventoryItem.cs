@@ -78,14 +78,10 @@ public class InventoryItem : NetworkBehaviour
         }
     }
 
-    private void OnDisable()
-    {
-        CookingManager.OnCookingFinished -= RemoveIngredient;
-    }
-
     public override void Despawned(NetworkRunner runner, bool hasState)
     {
         base.Despawned(runner, hasState);
+        CookingManager.OnCookingFinished -= RemoveIngredient;
         if (inventory != null)
             inventory.OnIngredientAdded -= AddIngredient;
     }

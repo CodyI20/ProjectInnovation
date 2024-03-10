@@ -8,6 +8,7 @@ public class TradeInventory : NetworkBehaviour
 {
     [SerializeField] private Inventory inventory;
     private Dictionary<RawIngredients, int> tradeIngredients;
+    private RawIngredients ingredientToRemove = RawIngredients.None;
     [SerializeField] private List<InventoryItem> tradeItems;
     private void Awake()
     {
@@ -21,12 +22,17 @@ public class TradeInventory : NetworkBehaviour
     {
         Debug.Log("Enabled TradeInventory");
         AddTradeItems();
+        if(ingredientToRemove != RawIngredients.None)
+        {
+            RemoveTradeIngredients(ingredientToRemove);
+            ingredientToRemove = RawIngredients.None;
+        }
     }
     public override void Spawned()
     {
         base.Spawned();
         inventory.OnIngredientAdded += AddTradeIngredients;
-        CookingManager.OnCookingFinishedd += RemoveTradeIngredients;
+        CookingManager.OnCookingFinishedd += IngredientToRemove;
     }
     private void AddTradeItems()
     {
@@ -73,9 +79,14 @@ public class TradeInventory : NetworkBehaviour
             {
                 Debug.Log("Removing trade ingredient: " + ingredient);
                 tradeIngredients.Remove(ingredient);
-                Destroy(tradeItems.Find(x => x.Item == ingredient).gameObject);
+                //Destroy(tradeItems.Find(x => x.Item == ingredient).gameObject);
             }
         }
+    }
+
+    private void IngredientToRemove(RawIngredients ingredient)
+    {
+        ingredientToRemove = ingredient;
     }
 
     public Inventory GetInventory()
@@ -86,6 +97,6 @@ public class TradeInventory : NetworkBehaviour
     {
         base.Despawned(runner, hasState);
         inventory.OnIngredientAdded -= AddTradeIngredients;
-        CookingManager.OnCookingFinishedd -= RemoveTradeIngredients;
+        CookingManager.OnCookingFinishedd -= IngredientToRemove;
     }
 }
