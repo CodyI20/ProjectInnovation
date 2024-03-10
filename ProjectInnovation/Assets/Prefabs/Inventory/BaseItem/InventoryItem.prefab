@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4792622999340526974}
   - component: {fileID: 939608829801068664}
   - component: {fileID: 1597425425409034734}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ItemCountBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 136000328987975810}
   - component: {fileID: 5876252302322628431}
   - component: {fileID: 2904002273228279400}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ItemCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,11 +108,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4792622999340526974}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -1.3, y: 2.2}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 1, y: 0}
 --- !u!222 &5876252302322628431
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 3714620418363474227}
   - component: {fileID: 7481719458110882598}
   - component: {fileID: -3730633992876787007}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InventoryItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,3 +348,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountText: {fileID: 2904002273228279400}
   item: 0
+  itemType: 0

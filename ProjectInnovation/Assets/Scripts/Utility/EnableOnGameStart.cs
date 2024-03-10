@@ -14,7 +14,7 @@ public class EnableOnGameStart : NetworkBehaviour
         GameManager.OnMatchStart -= RPC_Enable;
     }
 
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    [Rpc(RpcSources.All, RpcTargets.All)]
     void RPC_Enable()
     {   
         gameObject.SetActive(true);

@@ -1,15 +1,17 @@
 ﻿using CookingEnums;
+using Fusion;
 using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class InventoryItem : MonoBehaviour
+public class InventoryItem : NetworkBehaviour
 {
-    public static event Action<InventoryItem> OnItemClicked;
+    public static event Action<InventoryItem> OnInventoryItemClicked;
 
     private Inventory inventory;
+    private TradeInventory tradeInventory;
     private Button button;
     [SerializeField] private TextMeshProUGUI amountText;
     [SerializeField] private RawIngredients item;
@@ -21,33 +23,38 @@ public class InventoryItem : MonoBehaviour
         Trade
     }
 
+    public RawIngredients Item
+    {
+        get { return item; }
+    }
+    public int amount { get; private set; } = 0;
 
     private void Awake()
     {
         button = GetComponent<Button>();
     }
-    public RawIngredients Item
-    {
-        get { return item; }
-    }
-    public int amount { get; private set; }
 
     private void OnEnable()
     {
         CookingManager.OnCookingFinished += RemoveIngredient;
+        if (inventory == null)
+        {
+            if (itemType == ItemType.Inventory)
+            {
+                inventory = GetComponentInParent<Inventory>();
+                inventory.OnIngredientAdded += AddIngredient;
+            }
+        }
         if (itemType == ItemType.Inventory)
         {
-            inventory = GetComponentInParent<Inventory>();
-            inventory.OnIngredientAdded += AddIngredient;
             button.onClick.AddListener(OpenMethodsTab);
         }
     }
 
     private void OpenMethodsTab()
     {
-        if (itemType == ItemType.Inventory)
-            inventory.GetCookingMethodsTab().SetActive(true);
-        OnItemClicked?.Invoke(this);
+        inventory.GetCookingMethodsTab().SetActive(true);
+        OnInventoryItemClicked?.Invoke(this);
     }
 
     private void AddIngredient(RawIngredients ingredient, int amount)
@@ -73,9 +80,14 @@ public class InventoryItem : MonoBehaviour
 
     private void OnDisable()
     {
-        if (itemType == ItemType.Inventory)
-            inventory.OnIngredientAdded -= AddIngredient;
         CookingManager.OnCookingFinished -= RemoveIngredient;
+    }
+
+    public override void Despawned(NetworkRunner runner, bool hasState)
+    {
+        base.Despawned(runner, hasState);
+        if (inventory != null)
+            inventory.OnIngredientAdded -= AddIngredient;
     }
 
 }

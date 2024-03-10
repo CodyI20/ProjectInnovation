@@ -1,5 +1,6 @@
 using CookingEnums;
 using Fusion;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,15 +15,18 @@ public class TradeInventory : NetworkBehaviour
         {
             Debug.LogError("Inventory is not assigned to the TradeInventory script. Please assign it in the inspector.");
         }
+        tradeIngredients = new Dictionary<RawIngredients, int>();
     }
     private void OnEnable()
     {
+        Debug.Log("Enabled TradeInventory");
         AddTradeItems();
     }
     public override void Spawned()
     {
         base.Spawned();
-        tradeIngredients = new Dictionary<RawIngredients, int>();
+        inventory.OnIngredientAdded += AddTradeIngredients;
+        CookingManager.OnCookingFinishedd += RemoveTradeIngredients;
     }
     private void AddTradeItems()
     {
@@ -32,12 +36,12 @@ public class TradeInventory : NetworkBehaviour
             {
                 if (ingredient.Value > 0)
                 {
-                    AddTradeIngredients(ingredient.Key);
+                    AddTradeIngredients(ingredient.Key, 1);
                 }
             }
         }
     }
-    public void AddTradeIngredients(RawIngredients ingredient)
+    public void AddTradeIngredients(RawIngredients ingredient, int q)
     {
         foreach (var item in tradeItems)
         {
@@ -54,11 +58,12 @@ public class TradeInventory : NetworkBehaviour
                     tradeIngredients[ingredient] = 1;
                     Instantiate(tradeItems.Find(x => x.Item == ingredient), gameObject.transform);
                 }
+                break;
             }
         }
     }
 
-    public void RemoveTradeIngredients(RawIngredients ingredient, int q)
+    public void RemoveTradeIngredients(RawIngredients ingredient)
     {
         if (tradeIngredients.ContainsKey(ingredient))
         {
@@ -72,8 +77,15 @@ public class TradeInventory : NetworkBehaviour
             }
         }
     }
+
+    public Inventory GetInventory()
+    {
+        return inventory;
+    }
     public override void Despawned(NetworkRunner runner, bool hasState)
     {
         base.Despawned(runner, hasState);
+        inventory.OnIngredientAdded -= AddTradeIngredients;
+        CookingManager.OnCookingFinishedd -= RemoveTradeIngredients;
     }
 }

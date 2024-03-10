@@ -17,7 +17,7 @@ public class CookingManager : NetworkBehaviour
     {
         base.Spawned();
         GameManager.Instance.OnPlayerTurnEnd += InterruptCooking;
-        InventoryItem.OnItemClicked += GetInventoryItem;
+        InventoryItem.OnInventoryItemClicked += GetInventoryItem;
     }
 
     [HideInInspector][Networked] public CookingState _cookingState { get; private set; } = CookingState.Idle; //TODO check if it works with private set, if not, remove it
@@ -60,7 +60,7 @@ public class CookingManager : NetworkBehaviour
     {
         base.Despawned(runner, hasState);
         GameManager.Instance.OnPlayerTurnEnd -= InterruptCooking;
-        InventoryItem.OnItemClicked -= GetInventoryItem;
+        InventoryItem.OnInventoryItemClicked -= GetInventoryItem;
     }
 
 }
