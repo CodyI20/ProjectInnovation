@@ -20,7 +20,8 @@ public class InventoryItem : NetworkBehaviour
     public enum ItemType
     {
         Inventory,
-        Trade
+        Trade,
+        Bank
     }
 
     public RawIngredients Item
@@ -49,6 +50,23 @@ public class InventoryItem : NetworkBehaviour
         {
             button.onClick.AddListener(OpenMethodsTab);
         }
+        if(itemType == ItemType.Trade)
+        {
+            button.onClick.AddListener(AddTradeItemToTrade);
+        }
+        if(itemType == ItemType.Bank)
+        {
+            button.onClick.AddListener(AddBankItemToTrade);
+        }
+    }
+
+    private void AddTradeItemToTrade()
+    {
+        TradeManager.Instance.tradeItem = this;
+    }
+    private void AddBankItemToTrade()
+    {
+        TradeManager.Instance.bankItem = this;
     }
 
     private void OpenMethodsTab()
