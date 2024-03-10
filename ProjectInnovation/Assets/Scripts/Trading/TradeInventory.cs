@@ -7,7 +7,7 @@ using UnityEngine;
 public class TradeInventory : NetworkBehaviour
 {
     [SerializeField] private Inventory inventory;
-    private Dictionary<RawIngredients, int> tradeIngredients;
+    private Dictionary<RawIngredients, int> tradeIngredients = new Dictionary<RawIngredients, int>();
     private RawIngredients ingredientToRemove = RawIngredients.None;
     [SerializeField] private List<InventoryItem> tradeItems;
     private void Awake()
@@ -16,12 +16,11 @@ public class TradeInventory : NetworkBehaviour
         {
             Debug.LogError("Inventory is not assigned to the TradeInventory script. Please assign it in the inspector.");
         }
-        tradeIngredients = new Dictionary<RawIngredients, int>();
     }
     private void OnEnable()
     {
         Debug.Log("Enabled TradeInventory");
-        AddTradeItems();
+        //AddTradeItems();
         if(ingredientToRemove != RawIngredients.None)
         {
             RemoveTradeIngredients(ingredientToRemove);
@@ -56,12 +55,12 @@ public class TradeInventory : NetworkBehaviour
                 if (tradeIngredients.ContainsKey(ingredient))
                 {
                     Debug.Log("Increasing trade ingredient: " + ingredient);
-                    tradeIngredients[ingredient]++;
+                    tradeIngredients[ingredient] += q;
                 }
                 else
                 {
                     Debug.Log("Creating inventory ingredient: " + ingredient);
-                    tradeIngredients[ingredient] = 1;
+                    tradeIngredients[ingredient] = q;
                     Instantiate(tradeItems.Find(x => x.Item == ingredient), gameObject.transform);
                 }
                 break;

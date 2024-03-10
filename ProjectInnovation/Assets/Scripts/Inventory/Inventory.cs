@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : NetworkBehaviour
+public class Inventory : Singleton<Inventory>
 {
     public event Action<RawIngredients, int> OnIngredientAdded;
 
@@ -16,8 +16,9 @@ public class Inventory : NetworkBehaviour
     private Dictionary<PreparedIngredients, int> preparedIngredients;
     private Dictionary<RawIngredients, int> tradeIngredients;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         if (cookingManager == null)
         {
             Debug.LogError("Cooking Manager is not assigned to the Inventory script. Please assign it in the inspector.");
@@ -98,9 +99,17 @@ public class Inventory : NetworkBehaviour
     public void AddIngredient(RawIngredients ingredient, int quantity)
     {
         if (ingredients.ContainsKey(ingredient))
+        {
+            Debug.Log("Increasing inventory ingredient: " + ingredient);
             ingredients[ingredient] += quantity;
+        }
         else
+        {
+            Debug.Log("Creating inventory ingredient: " + ingredient);
             ingredients[ingredient] = quantity;
+            Instantiate(inventoryItem.Find(x => x.Item == ingredient), gameObject.transform);
+        }
+        OnIngredientAdded?.Invoke(ingredient, quantity);
     }
 
     public void RemoveIngredient(RawIngredients ingredient)
