@@ -29,7 +29,7 @@ public class RecipeUI : NetworkBehaviour
     {
         foreach (var item in recipeManager.items)
         {
-            Debug.Log("Adding item: " + item);
+            Debug.Log("Adding item: " + item.rawIngredient);
 
             // Instantiate the prefab instead of a new empty GameObject.
             GameObject textItem = Instantiate(textItemPrefab, recipePanel.transform, false);
