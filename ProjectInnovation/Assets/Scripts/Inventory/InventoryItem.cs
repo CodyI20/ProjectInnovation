@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using CookingEnums;
-using TMPro;
-using UnityEngine.UI;
+﻿using CookingEnums;
 using System;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
 public class InventoryItem : MonoBehaviour
@@ -13,6 +13,13 @@ public class InventoryItem : MonoBehaviour
     private Button button;
     [SerializeField] private TextMeshProUGUI amountText;
     [SerializeField] private RawIngredients item;
+    [SerializeField] private ItemType itemType;
+
+    public enum ItemType
+    {
+        Inventory,
+        Trade
+    }
 
 
     private void Awake()
@@ -27,15 +34,19 @@ public class InventoryItem : MonoBehaviour
 
     private void OnEnable()
     {
-        inventory = GetComponentInParent<Inventory>();
-        inventory.OnIngredientAdded += AddIngredient;
         CookingManager.OnCookingFinished += RemoveIngredient;
-        button.onClick.AddListener(OpenMethodsTab);
+        if (itemType == ItemType.Inventory)
+        {
+            inventory = GetComponentInParent<Inventory>();
+            inventory.OnIngredientAdded += AddIngredient;
+            button.onClick.AddListener(OpenMethodsTab);
+        }
     }
 
     private void OpenMethodsTab()
     {
-        inventory.GetCookingMethodsTab().SetActive(true);
+        if (itemType == ItemType.Inventory)
+            inventory.GetCookingMethodsTab().SetActive(true);
         OnItemClicked?.Invoke(this);
     }
 
@@ -49,11 +60,11 @@ public class InventoryItem : MonoBehaviour
     private void RemoveIngredient(InventoryItem item, CookingProcess process)
     {
         //OnIngredientDeleted?.Invoke(this.item);
-        if(Item == item.Item)
+        if (Item == item.Item)
         {
             this.amount -= 1;
             amountText.text = this.amount.ToString();
-            if(this.amount <= 0)
+            if (this.amount <= 0)
             {
                 Destroy(gameObject);
             }
@@ -62,7 +73,8 @@ public class InventoryItem : MonoBehaviour
 
     private void OnDisable()
     {
-        inventory.OnIngredientAdded -= AddIngredient;
+        if (itemType == ItemType.Inventory)
+            inventory.OnIngredientAdded -= AddIngredient;
         CookingManager.OnCookingFinished -= RemoveIngredient;
     }
 

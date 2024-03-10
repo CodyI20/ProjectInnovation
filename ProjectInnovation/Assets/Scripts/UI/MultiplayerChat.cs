@@ -3,24 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Fusion;
+using TMPro;
 
 public class MultiplayerChat : NetworkBehaviour
 {
-    public Text messages;
-    public InputField inputField;
-    public InputField usernameInput;
-    public string username = "Player";
+    [SerializeField] private TextMeshProUGUI messages;
+    [SerializeField] private InputField inputField;
+    [SerializeField] private TextMeshProUGUI username;
 
-    public void SetUsername()
-    {
-        messages.text += $"{username} changed their name to {usernameInput.text}\n";
-        username = usernameInput.text;
-    }
 
     public void CallMessageRpc()
     {
         string message = inputField.text;
-        RPC_SendMessage(username, message);
+        RPC_SendMessage(username.text, message);
     }
 
     [Rpc(RpcSources.All, RpcTargets.All)]
