@@ -1,3 +1,4 @@
+using CookingEnums;
 using Fusion;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 
 public class TradeManager : Singleton<TradeManager>
 {
+    public event System.Action<RawIngredients> OnTradeFinished;
     [SerializeField] private Image tradeSentItem1;
     [SerializeField] private Image tradeSentItem2;
     [SerializeField] private Image tradeReceivedItem1;
@@ -16,13 +18,14 @@ public class TradeManager : Singleton<TradeManager>
     [SerializeField] private Button playerAcceptButton;
     public InventoryItem tradeItem { get; set; }
     public InventoryItem bankItem { get; set; }
+    public PlayerRef tradeInitiator { get; set; }
 
     [SerializeField] private Button confirmTradeButton;
 
     public override void Spawned()
     {
         base.Spawned();
-        confirmTradeButton.onClick.AddListener(AddItemsToUI);
+        confirmTradeButton.onClick.AddListener(AddItemsToUISent);
         confirmTradeButton.interactable = false;
         playerRefs = Runner.ActivePlayers.ToList();
     }
@@ -33,15 +36,14 @@ public class TradeManager : Singleton<TradeManager>
         confirmTradeButton.interactable = tradeItem != null && bankItem != null;
     }
 
-    private void AddItemsToUI()
+    private void AddItemsToUISent()
     {
         if (tradeItem != null && bankItem != null)
         {
             tradeSentItem1.sprite = tradeItem.GetComponent<Image>().sprite;
             tradeSentItem2.sprite = bankItem.GetComponent<Image>().sprite;
-            tradeReceivedItem1.sprite = tradeItem.GetComponent<Image>().sprite;
-            tradeReceivedItem2.sprite = bankItem.GetComponent<Image>().sprite;
         }
+        tradeInitiator = Runner.LocalPlayer;
         if (playerAcceptButton != null)
         {
             foreach (var player in playerRefs)
@@ -54,7 +56,12 @@ public class TradeManager : Singleton<TradeManager>
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_AcceptTrade()
     {
-        Debug.Log($"Player : {Runner.LocalPlayer.PlayerId} has accepted the trade");
+        if (tradeInitiator == Runner.LocalPlayer)
+        {
+            Debug.Log($"Player : {Runner.LocalPlayer.PlayerId} has accepted the trade");
+            OnTradeFinished?.Invoke(bankItem.Item);
+            tradeInitiator = PlayerRef.None;
+        }
     }
 
     [Rpc(RpcSources.All, RpcTargets.All)]

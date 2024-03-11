@@ -32,12 +32,14 @@ public class Inventory : Singleton<Inventory>
         if (wheelSystem != null)
             wheelSystem.GetInventory(this);
         CookingManager.OnCookingFinishedd += RemoveIngredient;
+        TradeManager.Instance.OnTradeFinished += AddIngredient;
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)
     {
         base.Despawned(runner, hasState);
         CookingManager.OnCookingFinishedd -= RemoveIngredient;
+        TradeManager.Instance.OnTradeFinished -= AddIngredient;
     }
 
 
