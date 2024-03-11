@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Fusion;
-using UnityEngine.UI;
+using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class TradeManager : Singleton<TradeManager>
 {
@@ -36,12 +35,19 @@ public class TradeManager : Singleton<TradeManager>
 
     private void AddItemsToUI()
     {
-        if(tradeItem != null && bankItem != null)
+        if (tradeItem != null && bankItem != null)
         {
             tradeSentItem1.sprite = tradeItem.GetComponent<Image>().sprite;
             tradeSentItem2.sprite = bankItem.GetComponent<Image>().sprite;
             tradeReceivedItem1.sprite = tradeItem.GetComponent<Image>().sprite;
             tradeReceivedItem2.sprite = bankItem.GetComponent<Image>().sprite;
+        }
+        if (playerAcceptButton != null)
+        {
+            foreach (var player in playerRefs)
+            {
+                Instantiate(playerAcceptButton, playerBoxesParent);
+            }
         }
     }
 }

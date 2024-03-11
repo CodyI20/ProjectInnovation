@@ -4740,7 +4740,8 @@ MonoBehaviour:
   tradeReceivedItem1: {fileID: 8814333855669843017}
   tradeReceivedItem2: {fileID: 8434875885932271749}
   playerBoxesParent: {fileID: 9091229769621865049}
-  playerAcceptButton: {fileID: 0}
+  playerAcceptButton: {fileID: 2679060321859539180, guid: 1e76b17ad4f08ea4c9c7784eb1df02af,
+    type: 3}
   confirmTradeButton: {fileID: 7522627338261396973}
 --- !u!1 &8776166676439194979
 GameObject:
