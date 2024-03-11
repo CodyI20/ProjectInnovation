@@ -16,21 +16,17 @@ public class Inventory : Singleton<Inventory>
     private Dictionary<PreparedIngredients, int> preparedIngredients;
     private Dictionary<RawIngredients, int> tradeIngredients;
 
-    protected override void Awake()
-    {
-        base.Awake();
-        if (cookingManager == null)
-        {
-            Debug.LogError("Cooking Manager is not assigned to the Inventory script. Please assign it in the inspector.");
-        }
-    }
-
     /**
      * Constructors
      */
 
     public override void Spawned()
     {
+        Debug.Log("Inventory Spawned");
+        if (cookingManager == null)
+        {
+            Debug.LogError("Cooking Manager is not assigned to the Inventory script. Please assign it in the inspector.");
+        }
         ingredients = new Dictionary<RawIngredients, int>();
         preparedIngredients = new Dictionary<PreparedIngredients, int>();
         if (wheelSystem != null)

@@ -50,4 +50,16 @@ public class TradeManager : Singleton<TradeManager>
             }
         }
     }
+
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_AcceptTrade()
+    {
+        Debug.Log($"Player : {Runner.LocalPlayer.PlayerId} has accepted the trade");
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_DeclineTrade()
+    {
+        Debug.Log($"Player : {Runner.LocalPlayer.PlayerId} has declined the trade");
+    }
 }
