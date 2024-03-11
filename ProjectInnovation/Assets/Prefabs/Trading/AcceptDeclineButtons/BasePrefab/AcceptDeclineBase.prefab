@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4746938774153542711}
   - component: {fileID: 2679060321859539180}
   m_Layer: 5
-  m_Name: PlayerAcceptButton
+  m_Name: AcceptDeclineBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
