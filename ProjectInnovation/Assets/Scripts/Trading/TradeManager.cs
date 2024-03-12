@@ -20,8 +20,9 @@ public class TradeManager : Singleton<TradeManager>
     [SerializeField] private Transform playerBoxesParent;
     List<PlayerRef> playerRefs = new List<PlayerRef>();
     [SerializeField] private Button playerAcceptButton;
-    public InventoryItem tradeItem { get; set;}
-    public InventoryItem bankItem { get; set;}
+    private InventoryItem tradeItem;
+    private InventoryItem bankItem;
+
     public PlayerRef tradeInitiator { get; set; }
 
     [SerializeField] private Button confirmTradeButton;
@@ -29,13 +30,24 @@ public class TradeManager : Singleton<TradeManager>
     public override void Spawned()
     {
         base.Spawned();
-        confirmTradeButton.onClick.AddListener(EnableTheMainTradeUI);
+        confirmTradeButton.onClick.AddListener(RPC_EnableTheMainTradeUI);
         confirmTradeButton.onClick.AddListener(AddItemsToUISent);
         confirmTradeButton.onClick.AddListener(RPC_AddItemsToUIReceived);
+        InventoryItem.OnBankItemClicked += AddBankItem;
+        InventoryItem.OnTradeItemClicked += AddTradeItem;
         confirmTradeButton.interactable = false;
         playerRefs = Runner.ActivePlayers.ToList();
     }
 
+    public void AddTradeItem(InventoryItem item)
+    {
+        tradeItem = item;
+    }
+
+    public void AddBankItem(InventoryItem item)
+    {
+        bankItem = item;
+    }
 
     public InventoryItem GetTradeItem()
     {
@@ -52,7 +64,8 @@ public class TradeManager : Singleton<TradeManager>
         confirmTradeButton.interactable = tradeItem != null && bankItem != null;
     }
 
-    private void EnableTheMainTradeUI()
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    private void RPC_EnableTheMainTradeUI()
     {
         if(mainTradeUI != null)
         {
@@ -115,8 +128,10 @@ public class TradeManager : Singleton<TradeManager>
     public override void Despawned(NetworkRunner runner, bool hasState)
     {
         base.Despawned(runner, hasState);
-        confirmTradeButton.onClick.RemoveListener(EnableTheMainTradeUI);
+        confirmTradeButton.onClick.RemoveListener(RPC_EnableTheMainTradeUI);
         confirmTradeButton.onClick.RemoveListener(AddItemsToUISent);
         confirmTradeButton.onClick.RemoveListener(RPC_AddItemsToUIReceived);
+        InventoryItem.OnTradeItemClicked -= AddTradeItem;
+        InventoryItem.OnBankItemClicked -= AddBankItem;
     }
 }

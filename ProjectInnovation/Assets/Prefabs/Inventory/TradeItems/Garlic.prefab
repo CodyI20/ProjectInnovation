@@ -137,32 +137,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7498719201972735842, guid: ea7cb6bceb17a214896e69f93a8b2fdc,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -58289675792071825}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7cb6bceb17a214896e69f93a8b2fdc, type: 3}
---- !u!1 &5245668905407306419 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7498719201972735842, guid: ea7cb6bceb17a214896e69f93a8b2fdc,
-    type: 3}
-  m_PrefabInstance: {fileID: 2367927422833202641}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &-58289675792071825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5245668905407306419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortKey: 777051076
-  ObjectInterest: 1
-  Flags: 1
-  NestedObjects: []
-  NetworkedBehaviours: []

@@ -6,16 +6,18 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class InventoryItem : MonoBehaviour
+public class InventoryItem : NetworkBehaviour
 {
     public static event Action<InventoryItem> OnInventoryItemClicked;
+    public static event Action<InventoryItem> OnBankItemClicked;
+    public static event Action<InventoryItem> OnTradeItemClicked;
 
     private Inventory inventory;
     private TradeInventory tradeInventory;
     private Button button;
     [SerializeField] private TextMeshProUGUI amountText;
     [SerializeField] private RawIngredients item;
-    [SerializeField] private ItemType itemType;
+    public ItemType itemType;
 
     public enum ItemType
     {
@@ -63,13 +65,13 @@ public class InventoryItem : MonoBehaviour
     private void AddTradeItemToTrade()
     {
         Debug.Log($"Adding {item} to the trade...");
-        TradeManager.Instance.tradeItem = this;
+        OnTradeItemClicked?.Invoke(this);
         //TradeManager.Instance.RPC_AddTradeItem(this);
     }
     private void AddBankItemToTrade()
     {
         Debug.Log($"Adding {item} to the bank...");
-        TradeManager.Instance.tradeItem = this;
+        OnBankItemClicked?.Invoke(this);
         //TradeManager.Instance.RPC_AddBankItem(this);
     }
 

@@ -27,6 +27,7 @@ public class TradeButton : MonoBehaviour
     {
         if(Inventory.Instance.GetIngredients() == null)
         {
+            //Do something here to automatically decline the trade!!!
             return;
         }
         foreach (var item in Inventory.Instance.GetIngredients())
