@@ -160,17 +160,4 @@ MonoBehaviour:
   ObjectInterest: 1
   Flags: 1
   NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 7847154391323111184}
---- !u!114 &7847154391323111184 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -3730633992876787007, guid: ea7cb6bceb17a214896e69f93a8b2fdc,
-    type: 3}
-  m_PrefabInstance: {fileID: 2367927422833202641}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5245668905407306419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 316c4f428801c8e4daf409e82bf85ced, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  NetworkedBehaviours: []

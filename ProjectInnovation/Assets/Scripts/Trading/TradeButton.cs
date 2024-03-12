@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Fusion;
 
 [RequireComponent(typeof(Button))]
 public class TradeButton : MonoBehaviour
@@ -30,7 +31,7 @@ public class TradeButton : MonoBehaviour
         }
         foreach (var item in Inventory.Instance.GetIngredients())
         {
-            if (item.Key == TradeManager.Instance.bankItem.Item && item.Value > 0)
+            if (item.Key == TradeManager.Instance.GetBankItem().Item && item.Value > 0)
             {
                 button.interactable = true;
                 break;

@@ -214,6 +214,11 @@ public class Inventory : Singleton<Inventory>
         return tradeIngredients;
     }
 
+    public List<InventoryItem> GetInventoryItems()
+    {
+        return inventoryItem;
+    }
+
     public bool HasIngredient(RawIngredients ingredient)
     {
         return ingredients.ContainsKey(ingredient);

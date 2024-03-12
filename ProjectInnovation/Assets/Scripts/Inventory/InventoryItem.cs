@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class InventoryItem : NetworkBehaviour
+public class InventoryItem : MonoBehaviour
 {
     public static event Action<InventoryItem> OnInventoryItemClicked;
 
@@ -62,11 +62,15 @@ public class InventoryItem : NetworkBehaviour
 
     private void AddTradeItemToTrade()
     {
+        Debug.Log($"Adding {item} to the trade...");
         TradeManager.Instance.tradeItem = this;
+        //TradeManager.Instance.RPC_AddTradeItem(this);
     }
     private void AddBankItemToTrade()
     {
-        TradeManager.Instance.bankItem = this;
+        Debug.Log($"Adding {item} to the bank...");
+        TradeManager.Instance.tradeItem = this;
+        //TradeManager.Instance.RPC_AddBankItem(this);
     }
 
     private void OpenMethodsTab()
@@ -96,9 +100,8 @@ public class InventoryItem : NetworkBehaviour
         }
     }
 
-    public override void Despawned(NetworkRunner runner, bool hasState)
+    private void OnDestroy()
     {
-        base.Despawned(runner, hasState);
         CookingManager.OnCookingFinished -= RemoveIngredient;
         if (inventory != null)
             inventory.OnIngredientAdded -= AddIngredient;
