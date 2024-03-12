@@ -889,6 +889,7 @@ GameObject:
   - component: {fileID: 4466077331861638700}
   - component: {fileID: 8669846316061713108}
   - component: {fileID: 5623298652831508311}
+  - component: {fileID: 93358710050744201}
   m_Layer: 5
   m_Name: TradeTimer
   m_TagString: Untagged
@@ -1012,6 +1013,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &93358710050744201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2973243554096600987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20689885cd6adaf44a013f64d33e0915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3348740221016442011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,6 +1861,7 @@ GameObject:
   - component: {fileID: -344493261251582540}
   - component: {fileID: -402902742968262172}
   - component: {fileID: 773894597437488074}
+  - component: {fileID: 144268490708379315}
   m_Layer: 0
   m_Name: PlayerBaseShared
   m_TagString: Untagged
@@ -1902,10 +1916,12 @@ MonoBehaviour:
   - {fileID: -344493261251582540}
   - {fileID: -402902742968262172}
   - {fileID: 773894597437488074}
+  - {fileID: 144268490708379315}
   - {fileID: 3859330926488796966}
   - {fileID: 719831708844772594}
   - {fileID: 3400697232738940193}
   - {fileID: 7849042090831105228}
+  - {fileID: 93358710050744201}
 --- !u!143 &8552849633272174382
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2004,6 +2020,31 @@ MonoBehaviour:
   _interactLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &144268490708379315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336722378362010922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec38f0b296b40bd45874889867c65530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tradeSentItem1: {fileID: 5686176582870597192}
+  tradeSentItem2: {fileID: 6470597358095681193}
+  tradeReceivedItem1: {fileID: 8814333855669843017}
+  tradeReceivedItem2: {fileID: 8434875885932271749}
+  mainTradeUI: {fileID: 7037324239849039042}
+  tradeSentUI: {fileID: 8011325272344283624}
+  tradeReceivedUI: {fileID: 7431361571430875756}
+  playerBoxesParent: {fileID: 9091229769621865049}
+  playerAcceptButton: {fileID: 3797179404718943414, guid: c8881992e6fead9488b745fc93ecaf85,
+    type: 3}
+  _CurrentTradeTimeLeft: 0
+  confirmTradeButton: {fileID: 7522627338261396973}
+  tradeTime: 20
 --- !u!1 &4388646641356020036
 GameObject:
   m_ObjectHideFlags: 0
@@ -4546,7 +4587,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8601594789769998140}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec38f0b296b40bd45874889867c65530, type: 3}
   m_Name: 
@@ -4561,9 +4602,9 @@ MonoBehaviour:
   playerBoxesParent: {fileID: 9091229769621865049}
   playerAcceptButton: {fileID: 3797179404718943414, guid: c8881992e6fead9488b745fc93ecaf85,
     type: 3}
-  tradeItem: {fileID: 0}
-  bankItem: {fileID: 0}
+  _CurrentTradeTimeLeft: 0
   confirmTradeButton: {fileID: 7522627338261396973}
+  tradeTime: 20
 --- !u!1 &8776166676439194979
 GameObject:
   m_ObjectHideFlags: 0

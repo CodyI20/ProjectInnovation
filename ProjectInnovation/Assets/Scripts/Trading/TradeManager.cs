@@ -22,10 +22,14 @@ public class TradeManager : Singleton<TradeManager>
     [SerializeField] private Button playerAcceptButton;
     private InventoryItem tradeItem;
     private InventoryItem bankItem;
+    [HideInInspector][Networked] public float CurrentTradeTimeLeft { get; set; }
+    [Networked] public TickTimer networkedCurrentTradeTime { get; set; }
 
     public PlayerRef tradeInitiator { get; set; }
 
     [SerializeField] private Button confirmTradeButton;
+    [Header("TRADE TIMER")]
+    [SerializeField, Tooltip("The maximum time for a trade to be completed.")] private float tradeTime = 20f;
 
     public override void Spawned()
     {
@@ -36,6 +40,7 @@ public class TradeManager : Singleton<TradeManager>
         InventoryItem.OnBankItemClicked += AddBankItem;
         InventoryItem.OnTradeItemClicked += AddTradeItem;
         confirmTradeButton.interactable = false;
+        networkedCurrentTradeTime = TickTimer.None;
         playerRefs = Runner.ActivePlayers.ToList();
     }
 
@@ -58,6 +63,27 @@ public class TradeManager : Singleton<TradeManager>
         return bankItem;
     }
 
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    private void RPC_SetCurrentTimeFloat()
+    {
+        CurrentTradeTimeLeft = networkedCurrentTradeTime.RemainingTime(Runner).GetValueOrDefault();
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    void RPC_CheckTurnTime()
+    {
+        RPC_SetCurrentTimeFloat();
+        if (networkedCurrentTradeTime.Expired(Runner))
+        {
+            RPC_DeclineTrade();
+        }
+    }
+
+    public override void FixedUpdateNetwork()
+    {
+        base.FixedUpdateNetwork();
+        RPC_CheckTurnTime();
+    }
     public override void Render()
     {
         base.Render();
@@ -65,11 +91,22 @@ public class TradeManager : Singleton<TradeManager>
     }
 
     [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_TradeEndActions()
+    {
+        networkedCurrentTradeTime = TickTimer.None;
+        tradeReceivedUI.SetActive(false);
+        tradeSentUI.SetActive(false);
+        mainTradeUI.SetActive(false);
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.All)]
     private void RPC_EnableTheMainTradeUI()
     {
-        if(mainTradeUI != null)
+        if (mainTradeUI != null)
         {
             mainTradeUI.SetActive(true);
+            if (Runner.IsRunning)
+                networkedCurrentTradeTime = TickTimer.CreateFromSeconds(Runner, tradeTime);
         }
     }
 
@@ -96,12 +133,12 @@ public class TradeManager : Singleton<TradeManager>
     public void RPC_AddItemsToUIReceived()
     {
         Debug.Log($"Adding items to UI for the receivers of the trade...");
-        if(tradeItem != null && bankItem != null)
+        if (tradeItem != null && bankItem != null)
         {
             tradeReceivedItem1.sprite = bankItem.GetComponent<Image>().sprite;
             tradeReceivedItem2.sprite = tradeItem.GetComponent<Image>().sprite;
         }
-        if(tradeInitiator != Runner.LocalPlayer)
+        if (tradeInitiator != Runner.LocalPlayer)
         {
             tradeReceivedUI.SetActive(true);
         }
@@ -123,6 +160,7 @@ public class TradeManager : Singleton<TradeManager>
     public void RPC_DeclineTrade()
     {
         Debug.Log($"Player : {Runner.LocalPlayer.PlayerId} has declined the trade");
+        RPC_TradeEndActions();
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)
