@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using Fusion;
 using TMPro;
-using CookingEnums;
 using System;
 
 public class RecipeUI : NetworkBehaviour
@@ -58,16 +57,16 @@ public class RecipeUI : NetworkBehaviour
 
     private void CrossOutItem(InventoryItem item, CookingProcess process)
     {
-        foreach(var textItem in _texts)
+        int index = 0;
+        foreach (var recipeItem in recipeManager.items)
         {
-            foreach(var recipeItem in recipeManager.items)
+            if (item.Item.ToString() == recipeItem.rawIngredient.ToString() && process == recipeItem.cookingProcess)
             {
-                if(textItem.text.Contains(item.Item.ToString()) && item.Item.ToString() == recipeItem.rawIngredient.ToString() && process == recipeItem.cookingProcess)
-                {
-                    textItem.fontStyle = FontStyles.Strikethrough;
-                    OnItemCrossedOut?.Invoke(Runner.LocalPlayer);
-                }
+                _texts[index].fontStyle = FontStyles.Strikethrough;
+                OnItemCrossedOut?.Invoke(Runner.LocalPlayer);
+                return;
             }
+            index += 1;
         }
     }
 

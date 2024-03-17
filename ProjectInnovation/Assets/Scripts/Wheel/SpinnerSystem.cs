@@ -7,8 +7,9 @@ using Fusion;
 using System.Threading;
 using System.Threading.Tasks;
 
-public class WheelSystem : MonoBehaviour
+public class WheelSystem : NetworkBehaviour
 {
+    public static event System.Action OnWheelSpinFinish;
     [System.Serializable]
     public class WheelItem
     {
@@ -26,15 +27,17 @@ public class WheelSystem : MonoBehaviour
     private float initialForce;
     private CancellationTokenSource spinCancellationTokenSource;
 
-    private void OnEnable()
+    public override void Spawned()
     {
+        base.Spawned();
         Debug.Log("WheelSystem enabled");
-        GameManager.Instance.OnPlayerTurnEnd += TurnOffWheel;
+        GameManager.Instance.OnPlayerTurnEnd += RPC_TurnOffWheel;
     }
 
-    private void OnDestroy()
+    public override void Despawned(NetworkRunner runner, bool hasState)
     {
-        GameManager.Instance.OnPlayerTurnEnd -= TurnOffWheel;
+        base.Despawned(runner, hasState);
+        GameManager.Instance.OnPlayerTurnEnd -= RPC_TurnOffWheel;
     }
 
 
@@ -133,7 +136,7 @@ public class WheelSystem : MonoBehaviour
             {
                 Debug.Log("Landed on: " + item.ingredient);
                 GiveItem(item.ingredient);
-                TurnOffWheel(GameManager.Instance.Runner.LocalPlayer);
+                RPC_TurnOffWheel(GameManager.Instance.Runner.LocalPlayer);
                 success = true;
                 break;
             }
@@ -145,9 +148,11 @@ public class WheelSystem : MonoBehaviour
         }
     }
 
-    private void TurnOffWheel(PlayerRef player)
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    private void RPC_TurnOffWheel(PlayerRef player)
     {
         Debug.Log("Turning off wheel");
+        OnWheelSpinFinish?.Invoke();
         StopSpinningAsync();
         gameObject.SetActive(false);
     }

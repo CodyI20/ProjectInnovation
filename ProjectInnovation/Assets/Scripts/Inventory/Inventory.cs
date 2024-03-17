@@ -32,14 +32,14 @@ public class Inventory : Singleton<Inventory>
         if (wheelSystem != null)
             wheelSystem.GetInventory(this);
         CookingManager.OnCookingFinishedd += RemoveIngredient;
-        TradeManager.Instance.OnTradeFinished += AddIngredient;
+        TradeManager.Instance.OnTradeComplete += AddIngredient;
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)
     {
         base.Despawned(runner, hasState);
         CookingManager.OnCookingFinishedd -= RemoveIngredient;
-        TradeManager.Instance.OnTradeFinished -= AddIngredient;
+        TradeManager.Instance.OnTradeComplete -= AddIngredient;
     }
 
 
@@ -112,11 +112,13 @@ public class Inventory : Singleton<Inventory>
 
     public void RemoveIngredient(RawIngredients ingredient)
     {
-        Debug.Log("Removing ingredient: " + ingredient);
         if (ingredients.ContainsKey(ingredient))
+        {
+            Debug.Log("Removing ingredient: " + ingredient);
             ingredients[ingredient]--;
-        if (ingredients[ingredient] <= 0)
-            ingredients.Remove(ingredient);
+            if (ingredients[ingredient] <= 0)
+                ingredients.Remove(ingredient);
+        }
     }
 
     public void RemoveIngredient(RawIngredients ingredient, int quantity)

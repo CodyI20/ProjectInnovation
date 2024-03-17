@@ -1,9 +1,9 @@
 
 public class TradeAcceptButton : TradeButton
 {
-    protected override void TradeButtonClicked()
+    protected override void RPC_TradeButtonClicked()
     {
-        base.TradeButtonClicked();
+        base.RPC_TradeButtonClicked();
         TradeManager.Instance.RPC_AcceptTrade();
     }
 }

@@ -7,11 +7,13 @@ using UnityEngine.UI;
 
 public class TradeManager : Singleton<TradeManager>
 {
-    public event System.Action<RawIngredients> OnTradeFinished;
+    public event System.Action<RawIngredients> OnTradeComplete;
+    public event System.Action OnTradeEnded;
     [SerializeField] private Image tradeSentItem1;
     [SerializeField] private Image tradeSentItem2;
     [SerializeField] private Image tradeReceivedItem1;
     [SerializeField] private Image tradeReceivedItem2;
+    [SerializeField] private TradeTimer tradeTimer;
 
     [SerializeField] private GameObject mainTradeUI;
     [SerializeField] private GameObject tradeSentUI;
@@ -22,7 +24,7 @@ public class TradeManager : Singleton<TradeManager>
     [SerializeField] private Button playerAcceptButton;
     private InventoryItem tradeItem;
     private InventoryItem bankItem;
-    [HideInInspector][Networked] public float CurrentTradeTimeLeft { get; set; }
+    [HideInInspector][Networked, OnChangedRender(nameof(RPC_SetCurrentTimeFloat))] public float CurrentTradeTimeLeft { get; set; }
     [Networked] public TickTimer networkedCurrentTradeTime { get; set; }
 
     public PlayerRef tradeInitiator { get; set; }
@@ -37,19 +39,21 @@ public class TradeManager : Singleton<TradeManager>
         confirmTradeButton.onClick.AddListener(RPC_EnableTheMainTradeUI);
         confirmTradeButton.onClick.AddListener(AddItemsToUISent);
         confirmTradeButton.onClick.AddListener(RPC_AddItemsToUIReceived);
-        InventoryItem.OnBankItemClicked += AddBankItem;
-        InventoryItem.OnTradeItemClicked += AddTradeItem;
+        InventoryItem.OnBankItemClicked += RPC_AddBankItem;
+        InventoryItem.OnTradeItemClicked += RPC_AddTradeItem;
         confirmTradeButton.interactable = false;
         networkedCurrentTradeTime = TickTimer.None;
         playerRefs = Runner.ActivePlayers.ToList();
     }
 
-    public void AddTradeItem(InventoryItem item)
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_AddTradeItem(InventoryItem item)
     {
         tradeItem = item;
     }
 
-    public void AddBankItem(InventoryItem item)
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_AddBankItem(InventoryItem item)
     {
         bankItem = item;
     }
@@ -63,14 +67,14 @@ public class TradeManager : Singleton<TradeManager>
         return bankItem;
     }
 
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    [Rpc(RpcSources.All, RpcTargets.All)]
     private void RPC_SetCurrentTimeFloat()
     {
         CurrentTradeTimeLeft = networkedCurrentTradeTime.RemainingTime(Runner).GetValueOrDefault();
+        tradeTimer.UpdateTextTimer(CurrentTradeTimeLeft);
     }
 
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    void RPC_CheckTurnTime()
+    void CheckTurnTime()
     {
         RPC_SetCurrentTimeFloat();
         if (networkedCurrentTradeTime.Expired(Runner))
@@ -82,7 +86,7 @@ public class TradeManager : Singleton<TradeManager>
     public override void FixedUpdateNetwork()
     {
         base.FixedUpdateNetwork();
-        RPC_CheckTurnTime();
+        CheckTurnTime();
     }
     public override void Render()
     {
@@ -93,6 +97,7 @@ public class TradeManager : Singleton<TradeManager>
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_TradeEndActions()
     {
+        OnTradeEnded?.Invoke();
         networkedCurrentTradeTime = TickTimer.None;
         tradeReceivedUI.SetActive(false);
         tradeSentUI.SetActive(false);
@@ -132,16 +137,15 @@ public class TradeManager : Singleton<TradeManager>
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_AddItemsToUIReceived()
     {
-        Debug.Log($"Adding items to UI for the receivers of the trade...");
+        if (tradeInitiator == Runner.LocalPlayer)
+            return;
         if (tradeItem != null && bankItem != null)
         {
+            Debug.Log("Adding items to UI for the receiver of the trade...");
             tradeReceivedItem1.sprite = bankItem.GetComponent<Image>().sprite;
             tradeReceivedItem2.sprite = tradeItem.GetComponent<Image>().sprite;
         }
-        if (tradeInitiator != Runner.LocalPlayer)
-        {
-            tradeReceivedUI.SetActive(true);
-        }
+        tradeReceivedUI.SetActive(true);
     }
 
     [Rpc(RpcSources.All, RpcTargets.All)]
@@ -150,7 +154,7 @@ public class TradeManager : Singleton<TradeManager>
         if (tradeInitiator == Runner.LocalPlayer)
         {
             Debug.Log($"Player : {Runner.LocalPlayer.PlayerId} has accepted the trade");
-            OnTradeFinished?.Invoke(bankItem.Item);
+            OnTradeComplete?.Invoke(bankItem.Item);
             tradeInitiator = PlayerRef.None;
             tradeReceivedUI.SetActive(false);
         }
@@ -169,7 +173,7 @@ public class TradeManager : Singleton<TradeManager>
         confirmTradeButton.onClick.RemoveListener(RPC_EnableTheMainTradeUI);
         confirmTradeButton.onClick.RemoveListener(AddItemsToUISent);
         confirmTradeButton.onClick.RemoveListener(RPC_AddItemsToUIReceived);
-        InventoryItem.OnTradeItemClicked -= AddTradeItem;
-        InventoryItem.OnBankItemClicked -= AddBankItem;
+        InventoryItem.OnTradeItemClicked -= RPC_AddTradeItem;
+        InventoryItem.OnBankItemClicked -= RPC_AddBankItem;
     }
 }

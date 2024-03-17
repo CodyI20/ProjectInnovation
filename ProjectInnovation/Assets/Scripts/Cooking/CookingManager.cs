@@ -18,7 +18,7 @@ public class CookingManager : NetworkBehaviour
         base.Spawned();
         GameManager.Instance.OnPlayerTurnEnd += InterruptCooking;
         InventoryItem.OnInventoryItemClicked += GetInventoryItem;
-        GameManager.OnMatchStart += () => gameObject.SetActive(false);
+        //GameManager.OnMatchStart += DisableGameObject;
     }
 
     [HideInInspector][Networked] public CookingState _cookingState { get; private set; } = CookingState.Idle; //TODO check if it works with private set, if not, remove it
@@ -37,7 +37,7 @@ public class CookingManager : NetworkBehaviour
 
     private void InterruptCooking(PlayerRef currentPlayer)
     {
-        if(_cookingState == CookingState.Cooking && Runner.LocalPlayer == currentPlayer)
+        if(_cookingState == CookingState.Cooking)
         {
             _cookingState = CookingState.Interrupted;
             StopCoroutine("Cooking");
@@ -57,12 +57,17 @@ public class CookingManager : NetworkBehaviour
         OnCookingFinishedd?.Invoke(inventoryItem.Item);
     }
 
+    private void DisableGameObject()
+    {
+        gameObject.SetActive(false);
+    }
+
     public override void Despawned(NetworkRunner runner, bool hasState)
     {
         base.Despawned(runner, hasState);
         GameManager.Instance.OnPlayerTurnEnd -= InterruptCooking;
         InventoryItem.OnInventoryItemClicked -= GetInventoryItem;
-        GameManager.OnMatchStart -= () => gameObject.SetActive(false);
+        //GameManager.OnMatchStart -= DisableGameObject;
     }
 
 }

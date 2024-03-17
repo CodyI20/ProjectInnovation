@@ -6,7 +6,7 @@ public class TurnTimerUI : NetworkBehaviour
 {
     [Networked] private bool isTimerActive { get; set; } = false;
 
-    private TMP_Text timerText { get; set; }
+    private TMP_Text timerText;
 
 
     public override void Spawned()

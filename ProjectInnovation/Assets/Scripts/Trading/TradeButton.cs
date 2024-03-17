@@ -1,31 +1,31 @@
+using Fusion;
 using UnityEngine;
 using UnityEngine.UI;
-using Fusion;
 
 [RequireComponent(typeof(Button))]
-public class TradeButton : MonoBehaviour
+public class TradeButton : NetworkBehaviour
 {
     public static event System.Action<TradeButton> OnTradeButtonClicked;
     protected Button button;
+    [HideInInspector][Networked] public bool isButtonInteractable { get; private set; } = false;
 
-    private void Awake()
+    public override void Spawned()
     {
+        base.Spawned();
         button = GetComponent<Button>();
         button.interactable = false;
-    }
-
-    private void OnEnable()
-    {
-        button.onClick.AddListener(TradeButtonClicked);
+        isButtonInteractable = false;
+        button.onClick.AddListener(RPC_TradeButtonClicked);
         if (Inventory.Instance != null)
         {
-            SetButtonInteractable();
+            RPC_SetButtonInteractable();
         }
     }
 
-    private void SetButtonInteractable()
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    private void RPC_SetButtonInteractable()
     {
-        if(Inventory.Instance.GetIngredients() == null)
+        if (Inventory.Instance.GetIngredients() == null)
         {
             //Do something here to automatically decline the trade!!!
             return;
@@ -34,18 +34,21 @@ public class TradeButton : MonoBehaviour
         {
             if (item.Key == TradeManager.Instance.GetBankItem().Item && item.Value > 0)
             {
+                isButtonInteractable = true;
                 button.interactable = true;
                 break;
             }
         }
     }
 
-    private void OnDisable()
+    public override void Despawned(NetworkRunner runner, bool hasState)
     {
-        button.onClick.RemoveListener(TradeButtonClicked);
+        base.Despawned(runner, hasState);
+        button.onClick.RemoveListener(RPC_TradeButtonClicked);
     }
 
-    protected virtual void TradeButtonClicked()
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    protected virtual void RPC_TradeButtonClicked()
     {
         OnTradeButtonClicked?.Invoke(this);
     }

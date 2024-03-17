@@ -2,30 +2,20 @@ using Fusion;
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(TMP_Text))]
 public class TradeTimer : NetworkBehaviour
 {
-    [Networked] private bool isTimerActive { get; set; } = false;
-    private TMP_Text timerText { get; set; }
+    [Networked] private string tradeTimeLeft { get; set; } // Synced timer value
+    [SerializeField] private TextMeshProUGUI timerText;
 
-    public override void Spawned()
+    public void UpdateTextTimer(float updatedTime)
     {
-        base.Spawned();
-        timerText = GetComponent<TMP_Text>();
-        isTimerActive = true;
+        tradeTimeLeft = updatedTime.ToString("F0");
+        RPC_UpdateTimerText();
     }
 
     [Rpc(RpcSources.All, RpcTargets.All)]
-    void RPC_UpdateTimerText(float updatedTime)
+    void RPC_UpdateTimerText()
     {
-        timerText.text = updatedTime.ToString("F0");
-    }
-
-    public override void Render()
-    {
-        if (isTimerActive)
-        {
-            RPC_UpdateTimerText(TradeManager.Instance.CurrentTradeTimeLeft);
-        }
+        timerText.text = tradeTimeLeft;
     }
 }
